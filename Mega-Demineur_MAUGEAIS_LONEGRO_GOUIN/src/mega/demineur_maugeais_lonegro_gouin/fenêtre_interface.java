@@ -15,6 +15,13 @@ public class fenêtre_interface extends javax.swing.JFrame {
      */
     public fenêtre_interface() {
         initComponents();
+        
+       for(int i = 5 ; i >=0 ; i--){
+           for(int j = 0 ; j<7 ; j++){
+               Cellule_Graphique CellGraph = new Cellule_Graphique();
+               inter_déminage.add(CellGraph);
+           }
+       }
     }
 
     /**
