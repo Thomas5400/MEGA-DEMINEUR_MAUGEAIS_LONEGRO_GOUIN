@@ -255,7 +255,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
         Grille plateau = new Grille(l ,c );
         
         //on place les bombes dans le tableau 
-        placerBombes(plateau);     
+        placerBombes(plateau, l , c);     
         
         
         //partie affiche le nombre de vie
@@ -317,12 +317,12 @@ public class fenêtre_interface extends javax.swing.JFrame {
     }
 
     
-    public void placerBombes(Grille plateau){
+    public void placerBombes(Grille plateau, int l , int c){
         for(int i=0; i<6; i++){
             int j=0;
             while(j==0){       
-                int x = (int) (Math.random() * (9 - 3));// on choisit une valeur aléatoire
-                int y = (int) (Math.random() * (20 - 3));//idem
+                int x = (int) (Math.random() * (l+3 - 3));// on choisit une valeur aléatoire
+                int y = (int) (Math.random() * (c+3 - 3));//idem
                 if(plateau.presenceBombe(x, y)==false){
                     j=1;
                     plateau.placerBombe(x, y);
