@@ -17,7 +17,7 @@ public class Cellule_Graphique extends JButton{
     Cellule CelluleAssociee ;
     ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/image/celluleVide.png"));
     ImageIcon img_bombe = new javax.swing.ImageIcon(getClass().getResource("/image/B.jpg"));
-    ImageIcon img_vie = new javax.swing.ImageIcon(getClass().getResource("/image/vie(1).jpg")); 
+    ImageIcon img_vie = new javax.swing.ImageIcon(getClass().getResource("/image/VIE.jpg")); 
     
     public Cellule_Graphique(Cellule Unecellule){
         CelluleAssociee = Unecellule;
@@ -26,7 +26,10 @@ public class Cellule_Graphique extends JButton{
     @Override
     public void paintComponent(Graphics G){
         super.paintComponent(G);
-        if(CelluleAssociee.presenceBombe()==true){
+        if(CelluleAssociee.presenceVie()==true){
+            setIcon(img_vie);
+        }
+        else if(CelluleAssociee.presenceBombe()==true){
            setIcon(img_bombe);
         }else{
             setIcon(img_vide);

@@ -12,12 +12,26 @@ public class Cellule { //on créer la classe Cellule
     boolean activationBombe;
     boolean bombeCourant;
     boolean avoirKit;
+    boolean vie;
     
     
     public Cellule(){ //constructeur de la classe 
+        this.vie =true;
         this.activationBombe = false;
         this.bombeCourant = false;
         this.avoirKit = false;
+    }
+    public boolean supprimervie(){
+        this.vie = false;
+        return this.vie;
+    }
+    public boolean presenceVie(){
+        if (this.vie == false ) {
+            return false;            
+        }
+        else {
+            return true;
+        }
     }
     
     public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas

@@ -16,11 +16,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
      */
     public fenêtre_interface() {
         initComponents();
-        Grille plateau_vie = new Grille(1,3 );
-        for(int i=0;i<3;i++){
-            
-        }
         
+        
+        //PArtie du code qui servira à faire des actions avec les boutons de la grille 
         taille_Grille_Lignes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taille_Grille_LignesActionPerformed(evt);
@@ -170,7 +168,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                             .addComponent(txt_Joueur, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(76, 76, 76)
                         .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(txt_Taille))
                     .addGroup(Infos_joueurLayout.createSequentialGroup()
                         .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,11 +187,11 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 .addComponent(txt_X)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(taille_Grille_Colonnes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addGroup(Infos_joueurLayout.createSequentialGroup()
-                .addGap(77, 77, 77)
+                .addGap(178, 178, 178)
                 .addComponent(btn_Demarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -217,22 +215,21 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_Nbkits)
                             .addComponent(nb_Kits)))
-                    .addGroup(Infos_joueurLayout.createSequentialGroup()
-                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Infos_joueurLayout.createSequentialGroup()
-                                .addComponent(infosJoueur_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42))
-                            .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Demarrer, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Infos_joueurLayout.createSequentialGroup()
+                            .addComponent(infosJoueur_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(42, 42, 42))
+                        .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(btn_Demarrer, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addGap(8, 8, 8))
         );
 
-        getContentPane().add(Infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 1090, 220));
+        getContentPane().add(Infos_joueur, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 1350, 220));
 
-        setBounds(0, 0, 1161, 728);
+        setBounds(0, 0, 1568, 728);
     }// </editor-fold>//GEN-END:initComponents
 
     private void taille_Grille_ColonnesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taille_Grille_ColonnesActionPerformed
@@ -254,12 +251,28 @@ public class fenêtre_interface extends javax.swing.JFrame {
         
         System.out.println(c);
         System.out.println(l);
+        
         Grille plateau = new Grille(l ,c );
+        
+        //on place les bombes dans le tableau 
         placerBombes(plateau);     
         
+        
+        //partie affiche le nombre de vie
+        Grille plateau_vie = new Grille(1,3 );
+        for(int i=0; i<3; i++){
+           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
+           affichage_vie.add(CellVie);
+        }
+        affichage_vie.repaint();
+        
+        //Partie qui créer toutes les cases du jeu avec les images 
         for(int i = l-1 ; i >=0 ; i--){
            for(int j = 0 ; j<c ; j++){
-               Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);//origine de l'erreur en gros la celulle du plateau [i][j] est null 
+               
+               
+               plateau.grille[i][j].supprimervie();
+               Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
                inter_déminage.add(CellGraph);
            }
        }

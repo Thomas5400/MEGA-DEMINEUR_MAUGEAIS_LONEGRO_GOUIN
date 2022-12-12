@@ -33,5 +33,7 @@ public class Grille {
     public void placerBombe(int x , int y){
         grille[x][y].placerBombe();
     }
-    
+     public boolean presencevie(int x, int y){
+         return grille[x][y].presenceVie();
+     }
 }
