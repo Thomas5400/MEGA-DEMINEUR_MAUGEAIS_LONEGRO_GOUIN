@@ -246,28 +246,31 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
     private void btn_DemarrerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DemarrerActionPerformed
         // TODO add your handling code here:
+        
+        //l'utilisateur rentre des valeurs l ligne et c colonne 
         int l = Integer.parseInt(taille_Grille_Lignes.getText());//commande qui permet de transformer le String en int 
         int c = Integer.parseInt(taille_Grille_Colonnes.getText());
         
+        //code qui ne sert qu'à tester si ca a bien marché 
         System.out.println(c);
         System.out.println(l);
         
-        Grille plateau = new Grille(l ,c );
+        Grille plateau = new Grille(l ,c );   //grille créer pour le plateau du jeu avec les l lignes et c colonne entrée par l'utilisateur
         
         //on place les bombes dans le tableau 
         placerBombes(plateau, l , c);     
         
         
         //partie affiche le nombre de vie
-        Grille plateau_vie = new Grille(1,3 );
-        for(int i=0; i<3; i++){
+        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
+        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
            Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
            affichage_vie.add(CellVie);
         }
         affichage_vie.repaint();
         
         //Partie qui créer toutes les cases du jeu avec les images 
-        for(int i = l-1 ; i >=0 ; i--){
+        for(int i = l-1 ; i >=0 ; i--){//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
            for(int j = 0 ; j<c ; j++){
                
                
@@ -318,6 +321,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
     
     public void placerBombes(Grille plateau, int l , int c){
+        
         for(int i=0; i<6; i++){
             int j=0;
             while(j==0){       
