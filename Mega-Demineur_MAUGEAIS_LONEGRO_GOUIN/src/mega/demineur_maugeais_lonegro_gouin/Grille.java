@@ -12,13 +12,26 @@ import java.util.ArrayList;
  */
 public class Grille {
 
-    int longeur;
+    int longueur;
     int largeur;
-
-    public Grille(int longeur, int largeur) { //constructeur de la classe
-        this.longeur = longeur;
+    Cellule grille [][] = new Cellule [100][100];
+    public Grille(int longueur, int largeur) { //constructeur de la classe
+        
+        this.longueur = longueur;
         this.largeur = largeur;
-        Cellule grille [][] = new Cellule [longeur][largeur];
+        for (int i=0; i<longueur ; i++){
+               for(int j=0 ; j<largeur ; j++){
+                   grille [i][j]=  new  Cellule();
+               }
+           }
+        
     }
-
+    
+    public boolean presenceBombe(int x, int y){
+        return grille[x][y].presenceBombe();
+    }
+    public void placerBombe(int x , int y){
+        grille[x][y].placerBombe();
+    }
+    
 }

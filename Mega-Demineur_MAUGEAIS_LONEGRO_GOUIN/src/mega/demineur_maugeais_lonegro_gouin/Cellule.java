@@ -14,21 +14,23 @@ public class Cellule { //on créer la classe Cellule
     boolean avoirKit;
     
     
-    public Cellule(boolean activation){ //constructeur de la classe 
+    public Cellule(){ //constructeur de la classe 
         this.activationBombe = false;
         this.bombeCourant = false;
         this.avoirKit = false;
     }
     
     public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas
-        if (bombeCourant == false ) {
+        if (this.bombeCourant == false ) {
             return false;            
         }
         else {
             return true;
         }
     }
-    
+    public void placerBombe(){
+        this.bombeCourant=true;
+    }
     boolean placerKit(){           //place un kit de deminage dans la cellule
         if(avoirKit){
             return false;

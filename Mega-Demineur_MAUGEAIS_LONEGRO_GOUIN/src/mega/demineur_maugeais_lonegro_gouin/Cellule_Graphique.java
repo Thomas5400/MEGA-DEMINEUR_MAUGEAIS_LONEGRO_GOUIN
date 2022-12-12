@@ -4,6 +4,8 @@
  */
 package mega.demineur_maugeais_lonegro_gouin;
 
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -12,7 +14,24 @@ import javax.swing.JButton;
  */
 public class Cellule_Graphique extends JButton{
     
-    Cellule CelluleAssociee;
+    Cellule CelluleAssociee ;
+    ImageIcon img_vide = new javax.swing.ImageIcon(getClass().getResource("/image/celluleVide.png"));
+    ImageIcon img_bombe = new javax.swing.ImageIcon(getClass().getResource("/image/B.jpg"));
+    ImageIcon img_vie = new javax.swing.ImageIcon(getClass().getResource("/image/vie(1).jpg")); 
+    
+    public Cellule_Graphique(Cellule Unecellule){
+        CelluleAssociee = Unecellule;
+    }
+    
+    @Override
+    public void paintComponent(Graphics G){
+        super.paintComponent(G);
+        if(CelluleAssociee.presenceBombe()==true){
+           setIcon(img_bombe);
+        }else{
+            setIcon(img_vide);
+        }
+    }
     
     
     
