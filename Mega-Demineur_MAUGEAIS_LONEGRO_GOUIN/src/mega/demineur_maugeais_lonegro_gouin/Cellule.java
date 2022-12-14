@@ -21,6 +21,12 @@ public class Cellule { //on créer la classe Cellule
         this.bombeCourant = false;
         this.avoirKit = false;
     }
+    
+    public boolean ExplosionBombe(){
+        this.activationBombe=true;
+        return this.activationBombe;
+    }
+    
     public boolean supprimervie(){
         this.vie = false;
         return this.vie;

@@ -17,14 +17,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
     public fenêtre_interface() {
         initComponents();
         
-                //partie affiche le nombre de vie
-        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
-        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
-           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
-           affichage_vie.add(CellVie);
-        }
-        affichage_vie.repaint();
-        
+
         
 
        
@@ -116,8 +109,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nb_Mines, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         infos_JeuLayout.setVerticalGroup(
             infos_JeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +172,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     .addComponent(txt_Joueur, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(76, 76, 76)
                                 .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_Taille)))
                 .addGap(18, 18, 18)
                 .addComponent(taille_Grille_Lignes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,7 +182,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 .addComponent(taille_Grille_Colonnes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
             .addGroup(Infos_joueurLayout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addComponent(btn_Demarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -257,6 +250,15 @@ public class fenêtre_interface extends javax.swing.JFrame {
         System.out.println(c);
         System.out.println(l);
         
+                        //partie affiche le nombre de vie
+        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
+        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
+           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
+           affichage_vie.add(CellVie);
+        }
+        affichage_vie.repaint();
+        
+        
         Grille plateau = new Grille(l ,c );   //grille créer pour le plateau du jeu avec les l lignes et c colonne entrée par l'utilisateur
         
         //on place les bombes dans le tableau 
@@ -278,7 +280,23 @@ public class fenêtre_interface extends javax.swing.JFrame {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         Cellule o = CellGraph.CelluleAssociee; 
                         if (o.bombeCourant== true){
-                        message.setText("Une bombe a été cliqué");
+                            o.ExplosionBombe() ;
+                            inter_déminage.repaint();
+                        message.setText("Un Cell a explosé : Maître Kaioh est pas content");
+                        
+                        for (int i = 2; i>=0; i--){
+                            if (plateau_vie.grille[0][i].presenceVie() == true){
+                                plateau_vie.grille[0][i].supprimervie() ;
+                                
+                                affichage_vie.repaint();
+                                break;
+                            
+                  
+                            }
+                        }
+                        if (plateau_vie.grille[0][0].presenceVie() == false){
+                            message.setText("Félicitations ! Vous avez réalisé l'immense exploit d'être plus inutile que Yamcha !!!");
+                        }
 
                         }
                         
