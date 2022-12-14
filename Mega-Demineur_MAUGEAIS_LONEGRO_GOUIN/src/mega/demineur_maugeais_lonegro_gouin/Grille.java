@@ -36,6 +36,9 @@ public class Grille {
     public boolean presencevie(int x, int y){
          return grille[x][y].presenceVie();
     }
+    public boolean presenceKit (int x, int y) {
+        return grille[x][y].presenceKit();
+    }
     
     public int decouverteGrille (int i, int j) { // méthode qui va permettre de savoir si il y a des bombes dans les cases adjacentes
         int a = 0;
