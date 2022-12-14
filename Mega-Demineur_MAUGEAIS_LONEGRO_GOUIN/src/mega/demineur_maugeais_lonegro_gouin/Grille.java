@@ -20,5 +20,7 @@ public class Grille {
         this.largeur = largeur;
         Cellule grille [][] = new Cellule [longeur][largeur];
     }
+    
+    
 
 }

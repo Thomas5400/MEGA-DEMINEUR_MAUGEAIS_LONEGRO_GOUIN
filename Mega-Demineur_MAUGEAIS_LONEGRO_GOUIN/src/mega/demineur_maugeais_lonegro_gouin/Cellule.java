@@ -20,7 +20,7 @@ public class Cellule { //on créer la classe Cellule
         this.avoirKit = false;
     }
     
-    public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas
+    public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas dans la cellule
         if (bombeCourant == false ) {
             return false;            
         }
