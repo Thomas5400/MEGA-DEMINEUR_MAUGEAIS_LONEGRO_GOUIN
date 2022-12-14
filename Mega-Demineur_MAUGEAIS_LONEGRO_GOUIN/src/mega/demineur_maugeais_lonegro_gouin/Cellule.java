@@ -12,16 +12,21 @@ public class Cellule { //on créer la classe Cellule
     boolean activationBombe;
     boolean bombeCourant;
     boolean avoirKit;
+    boolean vie;
     
     
-    public Cellule(boolean activation){ //constructeur de la classe 
+    public Cellule(){ //constructeur de la classe 
+        this.vie =true;
         this.activationBombe = false;
         this.bombeCourant = false;
         this.avoirKit = false;
     }
-    
-    public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas dans la cellule
-        if (bombeCourant == false ) {
+    public boolean supprimervie(){
+        this.vie = false;
+        return this.vie;
+    }
+    public boolean presenceVie(){
+        if (this.vie == false ) {
             return false;            
         }
         else {
@@ -29,6 +34,17 @@ public class Cellule { //on créer la classe Cellule
         }
     }
     
+    public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas
+        if (this.bombeCourant == false ) {
+            return false;            
+        }
+        else {
+            return true;
+        }
+    }
+    public void placerBombe(){
+        this.bombeCourant=true;
+    }
     boolean placerKit(){           //place un kit de deminage dans la cellule
         if(avoirKit){
             return false;
