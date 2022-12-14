@@ -29,7 +29,7 @@ public class Cellule_Graphique extends JButton{
         if(CelluleAssociee.presenceVie()==true){
             setIcon(img_vie);
         }
-        else if(CelluleAssociee.presenceBombe()==true){
+        else if(CelluleAssociee.activationBombe==true){
            setIcon(img_bombe);
         }else{
             setIcon(img_vide);

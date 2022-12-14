@@ -17,23 +17,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
     public fenêtre_interface() {
         initComponents();
         
-                //partie affiche le nombre de vie
-        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
-        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
-           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
-           affichage_vie.add(CellVie);
-        }
-        affichage_vie.repaint();
+
         
-        
-        //PArtie du code qui servira à faire des actions avec les boutons de la grille 
-        taille_Grille_Lignes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taille_Grille_LignesActionPerformed(evt);
-                
-                
-            }
-        });
 
        
     }
@@ -59,7 +44,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
         infosJeu_Title = new javax.swing.JLabel();
         txt_NbMines = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        message = new javax.swing.JTextArea();
         nb_Mines = new javax.swing.JLabel();
         infosJoueur_Title = new javax.swing.JLabel();
         txt_Taille = new javax.swing.JLabel();
@@ -106,9 +91,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
         txt_NbMines.setText("Nombre de mines présentes : ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        message.setColumns(20);
+        message.setRows(5);
+        jScrollPane1.setViewportView(message);
 
         nb_Mines.setText("0");
 
@@ -124,8 +109,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(nb_Mines, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
         infos_JeuLayout.setVerticalGroup(
             infos_JeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +172,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     .addComponent(txt_Joueur, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(76, 76, 76)
                                 .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txt_Taille)))
                 .addGap(18, 18, 18)
                 .addComponent(taille_Grille_Lignes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,7 +182,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 .addComponent(taille_Grille_Colonnes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
             .addGroup(Infos_joueurLayout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addComponent(btn_Demarrer, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,6 +250,15 @@ public class fenêtre_interface extends javax.swing.JFrame {
         System.out.println(c);
         System.out.println(l);
         
+                        //partie affiche le nombre de vie
+        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
+        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
+           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
+           affichage_vie.add(CellVie);
+        }
+        affichage_vie.repaint();
+        
+        
         Grille plateau = new Grille(l ,c );   //grille créer pour le plateau du jeu avec les l lignes et c colonne entrée par l'utilisateur
         
         //on place les bombes dans le tableau 
@@ -280,6 +274,41 @@ public class fenêtre_interface extends javax.swing.JFrame {
                
                plateau.grille[i][j].supprimervie();
                Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
+               
+                                //Partie du code qui servira à faire des actions avec les boutons de la grille 
+                CellGraph.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        Cellule o = CellGraph.CelluleAssociee; 
+                        if (o.bombeCourant== true){
+                            o.ExplosionBombe() ;
+                            inter_déminage.repaint();
+                        message.setText("Un Cell a explosé : Maître Kaioh est pas content");
+                        
+                        for (int i = 2; i>=0; i--){
+                            if (plateau_vie.grille[0][i].presenceVie() == true){
+                                plateau_vie.grille[0][i].supprimervie() ;
+                                
+                                affichage_vie.repaint();
+                                break;
+                            
+                  
+                            }
+                        }
+                        if (plateau_vie.grille[0][0].presenceVie() == false){
+                            message.setText("Félicitations ! Vous avez réalisé l'immense exploit d'être plus inutile que Yamcha !!!");
+                        }
+
+                        }
+                        
+                        
+                
+                
+                    }
+                });
+               
+               
+               
+               
                inter_déminage.add(CellGraph);
            }
        }
@@ -348,7 +377,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
     private javax.swing.JPanel infos_Jeu;
     private javax.swing.JPanel inter_déminage;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea message;
     private javax.swing.JLabel nb_Kits;
     private javax.swing.JLabel nb_Mines;
     private javax.swing.JTextField nom_joueur1;
