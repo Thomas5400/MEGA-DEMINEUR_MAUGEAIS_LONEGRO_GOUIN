@@ -64,29 +64,29 @@
                   <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="infosJoueur_Title" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_Joueur" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                          <Component id="nom_joueur1" min="-2" pref="162" max="-2" attributes="0"/>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
-                          <Component id="txt_Taille" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Nbkits" min="-2" pref="171" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="nb_Kits" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="txt_Vies" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txt_Vies" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="affichage_vie" min="-2" pref="144" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="txt_Nbkits" min="-2" pref="171" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="nb_Kits" min="-2" pref="120" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="infosJoueur_Title" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_Joueur" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Component id="nom_joueur1" min="-2" pref="162" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Component id="txt_Taille" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -111,32 +111,37 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="infos_Jeu" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_Joueur" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="taille_Grille_Colonnes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_Taille" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nom_joueur1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="taille_Grille_Lignes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txt_X" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_Joueur" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="taille_Grille_Colonnes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_Taille" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nom_joueur1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="taille_Grille_Lignes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txt_X" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="infosJoueur_Title" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txt_Vies" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="affichage_vie" min="-2" pref="47" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="txt_Vies" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txt_Nbkits" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="nb_Kits" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="infosJoueur_Title" min="-2" pref="40" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="affichage_vie" min="-2" pref="47" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="infos_Jeu" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -159,7 +164,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="txt_Vies">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre de vies :"/>
+            <Property name="text" type="java.lang.String" value="Nombre de Goku pr&#xea;ts &#xe0; se sacrifier (vies) :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="txt_Nbkits">
