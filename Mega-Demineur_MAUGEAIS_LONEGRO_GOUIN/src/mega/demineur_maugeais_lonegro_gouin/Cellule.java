@@ -21,11 +21,11 @@ public class Cellule { //on créer la classe Cellule
         this.bombeCourant = false;
         this.avoirKit = false;
     }
-    public boolean supprimervie(){
+    public boolean supprimervie(){ //méthode qui va enlever une vie au joueur 
         this.vie = false;
         return this.vie;
     }
-    public boolean presenceVie(){
+    public boolean presenceVie(){ //methode qui va voir si il reste des vies aux joueurs 
         if (this.vie == false ) {
             return false;            
         }
