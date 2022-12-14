@@ -17,6 +17,14 @@ public class fenêtre_interface extends javax.swing.JFrame {
     public fenêtre_interface() {
         initComponents();
         
+                //partie affiche le nombre de vie
+        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
+        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
+           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
+           affichage_vie.add(CellVie);
+        }
+        affichage_vie.repaint();
+        
         
         //PArtie du code qui servira à faire des actions avec les boutons de la grille 
         taille_Grille_Lignes.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +85,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
             }
         });
 
-        txt_Vies.setText("Nombre de vies :");
+        txt_Vies.setText("Nombre de Goku prêts à se sacrifier (vies) :");
 
         txt_Nbkits.setText("Nombre de kits de déminage :");
 
@@ -163,24 +171,24 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 .addGap(124, 124, 124)
                 .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Infos_joueurLayout.createSequentialGroup()
-                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(infosJoueur_Title)
-                            .addComponent(txt_Joueur, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(76, 76, 76)
-                        .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(txt_Taille))
+                        .addComponent(txt_Nbkits, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nb_Kits, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(Infos_joueurLayout.createSequentialGroup()
-                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(Infos_joueurLayout.createSequentialGroup()
-                                .addComponent(txt_Vies, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_Vies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(Infos_joueurLayout.createSequentialGroup()
-                                .addComponent(txt_Nbkits, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nb_Kits, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(infosJoueur_Title)
+                                    .addComponent(txt_Joueur, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(76, 76, 76)
+                                .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addComponent(txt_Taille)))
                 .addGap(18, 18, 18)
                 .addComponent(taille_Grille_Lignes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,28 +208,30 @@ public class fenêtre_interface extends javax.swing.JFrame {
             .addGroup(Infos_joueurLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(Infos_joueurLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Joueur)
-                            .addComponent(taille_Grille_Colonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_Taille)
-                            .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(taille_Grille_Lignes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_X))
-                        .addGap(18, 18, 18)
-                        .addComponent(txt_Vies)
-                        .addGap(30, 30, 30)
+                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Infos_joueurLayout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txt_Joueur)
+                                    .addComponent(taille_Grille_Colonnes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Taille)
+                                    .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(taille_Grille_Lignes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_X)))
+                            .addComponent(infosJoueur_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Infos_joueurLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(Infos_joueurLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_Vies)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_Nbkits)
-                            .addComponent(nb_Kits)))
-                    .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, Infos_joueurLayout.createSequentialGroup()
-                            .addComponent(infosJoueur_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(42, 42, 42))
-                        .addComponent(infos_Jeu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nb_Kits))))
                 .addGap(18, 18, 18)
                 .addComponent(btn_Demarrer, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                 .addGap(8, 8, 8))
@@ -261,15 +271,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
         placerBombes(plateau, l , c);     
         
         
-        //partie affiche le nombre de vie
-        Grille plateau_vie = new Grille(1,3 );//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
-        for(int i=0; i<3; i++){//boucle pour placer les images dans le bon panel 
-           Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
-           affichage_vie.add(CellVie);
-        }
-        affichage_vie.repaint();
+
         
-        //Partie qui créer toutes les cases du jeu avec les images 
+        //Partie qui crée toutes les cases du jeu avec les images 
         for(int i = l-1 ; i >=0 ; i--){//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
            for(int j = 0 ; j<c ; j++){
                
@@ -320,7 +324,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
     }
 
     
-    public void placerBombes(Grille plateau, int l , int c){
+    public void placerBombes(Grille plateau, int l , int c){// Méthode nous permettant de placer des bombes aléatoirement sur notre plateau
         
         for(int i=0; i<6; i++){
             int j=0;
