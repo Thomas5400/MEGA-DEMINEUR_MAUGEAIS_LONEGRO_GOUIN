@@ -9,65 +9,73 @@ package mega.demineur_maugeais_lonegro_gouin;
  * @author gouin
  */
 public class Cellule { //on créer la classe Cellule
+
     boolean activationBombe;
     boolean bombeCourant;
     boolean avoirKit;
     boolean vie;
-    
-    
-    public Cellule(){ //constructeur de la classe 
-        this.vie =true;
+
+    public Cellule() { //constructeur de la classe 
+        this.vie = true;
         this.activationBombe = false;
         this.bombeCourant = false;
         this.avoirKit = false;
     }
-    
-    public boolean ExplosionBombe(){
-        this.activationBombe=true;
+
+    public boolean ExplosionBombe() {
+        this.activationBombe = true;
         return this.activationBombe;
     }
-    
-    public boolean supprimervie(){
+
+    public boolean supprimervie() {
         this.vie = false;
         return this.vie;
     }
-    public boolean presenceVie(){ //methode qui va voir si il reste des vies aux joueurs 
-        if (this.vie == false ) {
-            return false;            
-        }
-        else {
+
+    public boolean presenceVie() { //methode qui va voir si il reste des vies aux joueurs 
+        if (this.vie == false) {
+            return false;
+        } else {
             return true;
         }
     }
-    
-    public boolean presenceBombe () { //methode permettant de savoir si il y a une bombe ou pas
-        if (this.bombeCourant == false ) {
-            return false;            
-        }
-        else {
+
+    public boolean presenceBombe() { //methode permettant de savoir si il y a une bombe ou pas
+        if (this.bombeCourant == false) {
+            return false;
+        } else {
             return true;
         }
     }
-    public void placerBombe(){
-        this.bombeCourant=true;
+
+    public void placerBombe() {
+        this.bombeCourant = true;
     }
-    boolean placerKit(){           //place un kit de deminage dans la cellule
-        if(avoirKit){
+
+    boolean placerKit() {           //place un kit de deminage dans la cellule
+        if (avoirKit) {
             return false;
         }
-    avoirKit =true;
+        avoirKit = true;
         return true;
     }
-    
-    public void supprimerKit(){     //supprime le kite de déminage de la cellule
-        avoirKit=false;
+
+    public void supprimerKit() {     //supprime le kite de déminage de la cellule
+        avoirKit = false;
     }
-    
-    boolean presenceKit(){    // Vérifie la présence d'un kit de déminage dans la cellule
-        return avoirKit;   
+
+    boolean KitSurCellule() {    // Vérifie la présence d'un kit de déminage dans la cellule
+        return avoirKit;
     }
-    
-    public void activerKit(){   // Active le kit dans la cellule le faisant disparaître de la cellule
+    public boolean presenceKit() {    // Vérifie la présence d'un kit de déminage dans la cellule
+        if (this.avoirKit == false) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void activerKit() {   // Active le kit dans la cellule le faisant disparaître de la cellule
         supprimerKit();
     }
 
@@ -75,9 +83,5 @@ public class Cellule { //on créer la classe Cellule
     public String toString() {  //on créer l'override de la classe
         return "Cellule{" + "activationBombe=" + activationBombe + ", bombeCourant=" + bombeCourant + ", avoirKit=" + avoirKit + '}';
     }
-    
-    
-    
-    
-    
+
 }
