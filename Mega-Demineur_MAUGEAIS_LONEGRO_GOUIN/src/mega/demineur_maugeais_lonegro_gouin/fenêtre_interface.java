@@ -26,14 +26,6 @@ public class fenêtre_interface extends javax.swing.JFrame {
         affichage_vie.repaint();
         
         
-        //PArtie du code qui servira à faire des actions avec les boutons de la grille 
-        taille_Grille_Lignes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                taille_Grille_LignesActionPerformed(evt);
-                
-                
-            }
-        });
 
        
     }
@@ -59,7 +51,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
         infosJeu_Title = new javax.swing.JLabel();
         txt_NbMines = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        message = new javax.swing.JTextArea();
         nb_Mines = new javax.swing.JLabel();
         infosJoueur_Title = new javax.swing.JLabel();
         txt_Taille = new javax.swing.JLabel();
@@ -106,9 +98,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
         txt_NbMines.setText("Nombre de mines présentes : ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        message.setColumns(20);
+        message.setRows(5);
+        jScrollPane1.setViewportView(message);
 
         nb_Mines.setText("0");
 
@@ -280,6 +272,25 @@ public class fenêtre_interface extends javax.swing.JFrame {
                
                plateau.grille[i][j].supprimervie();
                Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
+               
+                                //Partie du code qui servira à faire des actions avec les boutons de la grille 
+                CellGraph.addActionListener(new java.awt.event.ActionListener() {
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        Cellule o = CellGraph.CelluleAssociee; 
+                        if (o.bombeCourant== true){
+                        message.setText("Une bombe a été cliqué");
+
+                        }
+                        
+                        
+                
+                
+                    }
+                });
+               
+               
+               
+               
                inter_déminage.add(CellGraph);
            }
        }
@@ -348,7 +359,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
     private javax.swing.JPanel infos_Jeu;
     private javax.swing.JPanel inter_déminage;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea message;
     private javax.swing.JLabel nb_Kits;
     private javax.swing.JLabel nb_Mines;
     private javax.swing.JTextField nom_joueur1;
