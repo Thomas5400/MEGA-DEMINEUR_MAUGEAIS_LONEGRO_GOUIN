@@ -61,48 +61,42 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="txt_Nbkits" min="-2" pref="171" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
                           <Component id="nb_Kits" min="-2" pref="120" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="txt_Vies" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="affichage_vie" min="-2" pref="144" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="infosJoueur_Title" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_Joueur" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="txt_Vies" alignment="1" min="-2" pref="234" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nom_joueur1" min="-2" pref="162" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="infosJoueur_Title" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_Joueur" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                  <Component id="nom_joueur1" min="-2" pref="162" max="-2" attributes="0"/>
+                                  <Component id="affichage_vie" min="-2" pref="144" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="txt_Taille" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="taille_Grille_Lignes" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_X" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="taille_Grille_Colonnes" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txt_Taille" min="-2" max="-2" attributes="0"/>
+                      <Component id="niveau2" min="-2" pref="126" max="-2" attributes="0"/>
+                      <Component id="niveau1" min="-2" pref="126" max="-2" attributes="0"/>
+                      <Component id="niveau3" min="-2" pref="126" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="infos_Jeu" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="7" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="178" max="-2" attributes="0"/>
-                  <Component id="btn_Demarrer" min="-2" pref="931" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -110,43 +104,58 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="infos_Jeu" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="infos_Jeu" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="txt_Joueur" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="taille_Grille_Colonnes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_Taille" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nom_joueur1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="taille_Grille_Lignes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_X" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="txt_Joueur" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="nom_joueur1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="niveau3" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="niveau2" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="niveau1" min="-2" pref="26" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="affichage_vie" min="-2" pref="47" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="txt_Vies" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Component id="infosJoueur_Title" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="infosJoueur_Title" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="affichage_vie" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                                  <Component id="txt_Taille" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="txt_Vies" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txt_Nbkits" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nb_Kits" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                          </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txt_Nbkits" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="nb_Kits" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btn_Demarrer" pref="34" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -156,11 +165,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Joueur :"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="taille_Grille_Colonnes">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taille_Grille_ColonnesActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="txt_Vies">
           <Properties>
@@ -176,17 +180,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btn_Demarrer">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="66" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="DEMARRER"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_DemarrerActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="infos_Jeu">
           <Properties>
@@ -278,23 +271,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="txt_Taille">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Taille de grille voulue :"/>
+            <Property name="text" type="java.lang.String" value="Difficult&#xe9; (Taille 1,2,3) :"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nom_joueur1">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nom_joueur1ActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="taille_Grille_Lignes">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taille_Grille_LignesActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="txt_X">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="X"/>
-          </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="affichage_vie">
 
@@ -303,6 +286,30 @@
             <Property name="rows" type="int" value="1"/>
           </Layout>
         </Container>
+        <Component class="javax.swing.JButton" name="niveau2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="niveau2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="niveau1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="niveau1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="niveau3">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="niveau3ActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

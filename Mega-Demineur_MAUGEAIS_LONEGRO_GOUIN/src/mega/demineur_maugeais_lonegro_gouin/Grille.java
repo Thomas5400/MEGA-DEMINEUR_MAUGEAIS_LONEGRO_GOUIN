@@ -14,9 +14,9 @@ public class Grille {
 
     int longueur;
     int largeur;
-    Cellule grille [][] = new Cellule [100][100];
+    Cellule grille [][];
     public Grille(int longueur, int largeur) { //constructeur de la classe
-        
+        grille = new Cellule[longueur][largeur];
         this.longueur = longueur;
         this.largeur = largeur;
         for (int i=0; i<longueur ; i++){
