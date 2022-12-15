@@ -41,7 +41,7 @@ public class Partie {
             while(j==0){       
                 int x = (int) (Math.random() * (l+3 - 3));// on choisit une valeur aléatoire
                 int y = (int) (Math.random() * (c+3 - 3));//idem
-                if(plateau.presenceKit(x, y)==false){
+                if(plateau.presenceKit(x, y)==false && plateau.presenceBombe(x, y)==false){
                     j=1;
                     plateau.presenceKit(x, y);
                 }

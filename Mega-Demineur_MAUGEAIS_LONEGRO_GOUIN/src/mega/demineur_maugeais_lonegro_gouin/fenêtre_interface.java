@@ -254,6 +254,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
         
         Grille plateau = new Grille(l, c);
         placerBombes(plateau, l, c);
+        placerKits(plateau, l, c);
         inter_déminage.setLayout(new java.awt.GridLayout(l, c));
         
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
@@ -266,6 +267,18 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         Cellule o = CellGraph.CelluleAssociee;
+                        int avoirnbkit = Integer.parseInt(nb_Kits.getText());// cette partie sert tout simplement à ajouter la vie du kit automatiquement si on a un kit 
+                            if(avoirnbkit!=0){
+                                for(int k =2 ; k>=0; k--){
+                                    if(plateau_vie.grille[0][k].presenceVie()==false){
+                                    plateau_vie.grille[0][k].Ajoutervie();
+                                    affichage_vie.repaint();  
+                                    avoirnbkit -= 1;
+                                    nb_Kits.setText(avoirnbkit + "");
+                                    break;
+                                    }
+                                }
+                            }
                         if (o.bombeCourant == true) {
                             o.ExplosionBombe();
                             inter_déminage.repaint();
@@ -284,6 +297,22 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
+                        }
+                        else if(o.avoirKit==true){
+                            o.Usagekit();
+                            inter_déminage.repaint();
+                            int nbkit=0;
+                            for(int i=2 ; i>=0; i--){
+                                if(plateau_vie.grille[0][i].presenceVie()==false){
+                                    plateau_vie.grille[0][i].Ajoutervie();
+                                    affichage_vie.repaint();  
+                                    break;
+                                }else{
+                                    nbkit +=1;
+                                    nb_Kits.setText( nbkit + "");
+                                    break;
+                                }
+                            }
                         }
 
                     }
@@ -320,6 +349,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
         int c = 17;
         Grille plateau = new Grille(l, c);
         placerBombes(plateau, l, c);
+        placerKits(plateau, l, c);// onplace les kits de déminage
         inter_déminage.setLayout(new java.awt.GridLayout(l, c));
         
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
@@ -334,6 +364,19 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         Cellule o = CellGraph.CelluleAssociee;
                         if (o.bombeCourant == true) {
                             o.ExplosionBombe();
+                            
+                            int avoirnbkit = Integer.parseInt(nb_Kits.getText());
+                            if(avoirnbkit!=0){
+                                for(int k =2 ; k>=0; k--){
+                                    if(plateau_vie.grille[0][k].presenceVie()==false){
+                                    plateau_vie.grille[0][k].Ajoutervie();
+                                    affichage_vie.repaint();  
+                                    avoirnbkit -= 1;
+                                    nb_Kits.setText(avoirnbkit + "");
+                                    break;
+                                    }
+                                }
+                            }
                             inter_déminage.repaint();
                             message.setText("Un Cell a explosé : Maître Kaioh n'est pas content"); // Affichage si le joueur fait exploser une bombe Cell
 
@@ -350,6 +393,23 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
+                        }
+                        else if(o.avoirKit==true){
+                            o.Usagekit();
+                            o.supprimerKit();
+                            inter_déminage.repaint();
+                            int nbkit=0;
+                            for(int i=2 ; i>=0; i--){
+                                if(plateau_vie.grille[0][i].presenceVie()==false){
+                                    plateau_vie.grille[0][i].Ajoutervie();
+                                    affichage_vie.repaint();  
+                                    break;
+                                }else{
+                                    nbkit +=1;
+                                    nb_Kits.setText( nbkit + "");
+                                    break;
+                                }
+                            }
                         }
 
                     }
@@ -383,12 +443,14 @@ public class fenêtre_interface extends javax.swing.JFrame {
         int l = 8;
         int c = 20;
         Grille plateau = new Grille(l, c);
+        
         placerBombes(plateau, l, c);
+        placerKits(plateau, l, c);
         inter_déminage.setLayout(new java.awt.GridLayout(l, c));
         
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
             for (int j = 0; j < c; j++) {
-
+                
                 plateau.grille[i][j].supprimervie();
                 Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
 
@@ -398,7 +460,20 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         Cellule o = CellGraph.CelluleAssociee;
                         if (o.bombeCourant == true) {
                             o.ExplosionBombe();
+                            int avoirnbkit = Integer.parseInt(nb_Kits.getText());
+                            if(avoirnbkit!=0){
+                                for(int k =2 ; k>=0; k--){
+                                    if(plateau_vie.grille[0][k].presenceVie()==false){
+                                    plateau_vie.grille[0][k].Ajoutervie();
+                                    affichage_vie.repaint();  
+                                    avoirnbkit -= 1;
+                                    nb_Kits.setText(avoirnbkit + "");
+                                    break;
+                                    }
+                                }
+                            }
                             inter_déminage.repaint();
+                            
                             message.setText("Un Cell a explosé : Maître Kaioh n'est pas content"); // Affichage si le joueur fait exploser une bombe Cell
 
                             for (int i = 2; i >= 0; i--) {
@@ -415,14 +490,31 @@ public class fenêtre_interface extends javax.swing.JFrame {
                             }
 
                         }
+                        else if(o.avoirKit==true){
+                            o.Usagekit();
+                            inter_déminage.repaint();
+                            int nbkit=0;
+
+                            for(int i=2 ; i>=0; i--){
+                                if(plateau_vie.grille[0][i].presenceVie()==false){
+                                    plateau_vie.grille[0][i].Ajoutervie();
+                                    affichage_vie.repaint();  
+                                    break;
+                                }else{
+                                    nbkit +=1;
+                                    nb_Kits.setText( nbkit + "");
+                                    break;
+                                }
+                            }
+                        }
 
                     }
                 });
-
+                    
                 inter_déminage.add(CellGraph);
             }
         }
-
+        
         inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris 
         
     }//GEN-LAST:event_niveau3ActionPerformed
@@ -464,8 +556,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
     
     public void placerBombes(Grille plateau, int l , int c){// Méthode nous permettant de placer des bombes aléatoirement sur notre plateau
-        
-        for(int i=0; i<6; i++){
+        int nbMax = 0;
+        nbMax = (l*c)/(l/2);
+        for(int i=0; i<nbMax; i++){
             int j=0;
             while(j==0){       
                 int x = (int) (Math.random() * (l+3 - 3));// on choisit une valeur aléatoire
@@ -478,6 +571,26 @@ public class fenêtre_interface extends javax.swing.JFrame {
             
         }
     }
+    public void placerKits(Grille plateau, int l , int c){// Méthode nous permettant de placer des Kits de déminages aléatoirement sur notre plateau
+        
+        for(int i=0; i<4; i++){
+            int j=0;
+            while(j==0){       
+                int x = (int) (Math.random() * (l+3 - 3));// on choisit une valeur aléatoire
+                int y = (int) (Math.random() * (c+3 - 3));//idem
+                if(plateau.presenceKit(x, y)==false && plateau.presenceBombe(x, y)==false){
+                    j=1;
+                    plateau.placagedeKit(x, y);
+                }
+            }
+            
+        }
+    }
+    
+    
+    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Infos_joueur;
     private javax.swing.JPanel affichage_vie;

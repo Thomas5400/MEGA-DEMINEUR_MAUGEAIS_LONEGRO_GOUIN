@@ -14,21 +14,34 @@ public class Cellule { //on créer la classe Cellule
     boolean bombeCourant;
     boolean avoirKit;
     boolean vie;
-
+    boolean activationKit; //ajout d'un nouvel atribue
+    
+    
     public Cellule() { //constructeur de la classe 
         this.vie = true;
         this.activationBombe = false;
         this.bombeCourant = false;
         this.avoirKit = false;
+        this.activationKit =false;
     }
 
     public boolean ExplosionBombe() {
         this.activationBombe = true;
         return this.activationBombe;
     }
+    
+    public boolean Usagekit(){
+        this.activationKit=true;
+        return this.activationKit;
+    }
 
     public boolean supprimervie() {
         this.vie = false;
+        return this.vie;
+    }
+    
+    public boolean Ajoutervie(){
+        this.vie = true ;
         return this.vie;
     }
 
@@ -51,22 +64,18 @@ public class Cellule { //on créer la classe Cellule
     public void placerBombe() {
         this.bombeCourant = true;
     }
+    
 
-    boolean placerKit() {           //place un kit de deminage dans la cellule
-        if (avoirKit) {
-            return false;
-        }
-        avoirKit = true;
-        return true;
+
+    public void placerKit() {           //place un kit de deminage dans la cellule
+       this.avoirKit = true; 
     }
 
     public void supprimerKit() {     //supprime le kite de déminage de la cellule
         avoirKit = false;
     }
 
-    boolean KitSurCellule() {    // Vérifie la présence d'un kit de déminage dans la cellule
-        return avoirKit;
-    }
+    
     public boolean presenceKit() {    // Vérifie la présence d'un kit de déminage dans la cellule
         if (this.avoirKit == false) {
             return false;

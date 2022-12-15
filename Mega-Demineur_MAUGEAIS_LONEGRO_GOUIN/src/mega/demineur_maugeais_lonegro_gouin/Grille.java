@@ -40,6 +40,10 @@ public class Grille {
         return grille[x][y].presenceKit();
     }
     
+    public void placagedeKit(int x , int y){
+        grille[x][y].placerKit();
+    }
+    
     public int decouverteGrille (int i, int j) { // méthode qui va permettre de savoir si il y a des bombes dans les cases adjacentes
         int a = 0;
         if (grille[i+1][j].presenceBombe() == true ){ //Cas pour la cellule positionée en i+1
