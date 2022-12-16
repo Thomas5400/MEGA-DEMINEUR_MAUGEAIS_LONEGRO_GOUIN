@@ -54,7 +54,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
         inter_déminage.setBackground(new java.awt.Color(102, 102, 0));
         inter_déminage.setLayout(new java.awt.GridLayout(6, 17));
-        getContentPane().add(inter_déminage, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 1088, 384));
+        getContentPane().add(inter_déminage, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 1088, 384));
 
         Infos_joueur.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -153,8 +153,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                     .addGroup(Infos_joueurLayout.createSequentialGroup()
                         .addComponent(txt_Nbkits, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(91, 91, 91)
-                        .addComponent(nb_Kits, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(nb_Kits, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Infos_joueurLayout.createSequentialGroup()
                         .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,10 +163,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nom_joueur1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(Infos_joueurLayout.createSequentialGroup()
-                                .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(103, 103, 103)))
+                            .addComponent(affichage_vie, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_Taille)
                     .addComponent(niveau2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,11 +208,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
                             .addGroup(Infos_joueurLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                                 .addComponent(txt_Taille))
-                            .addGroup(Infos_joueurLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_Nbkits)
-                                    .addComponent(nb_Kits))))))
+                            .addGroup(Infos_joueurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txt_Nbkits)
+                                .addComponent(nb_Kits)))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -338,8 +333,11 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 inter_déminage.add(CellGraph);
             }
         }
-
-        inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris         
+        inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris 
+        niveau3.setEnabled(false);
+        niveau2.setEnabled(false);
+        niveau1.setEnabled(false);
+                
 
 
     }//GEN-LAST:event_niveau1ActionPerformed
@@ -454,8 +452,11 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 inter_déminage.add(CellGraph);
             }
         }
-
         inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris 
+        niveau3.setEnabled(false);
+        niveau2.setEnabled(false);
+        niveau1.setEnabled(false);
+        
     }//GEN-LAST:event_niveau2ActionPerformed
 
     private void niveau3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_niveau3ActionPerformed
@@ -543,6 +544,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                         else {
                             
                            int t =  plateau.decouverteGrille(ligne , colonne, 8, 20);
+                           
                            System.out.println(t);
                            if(t==1) {
                                o.Boule1();
@@ -550,6 +552,242 @@ public class fenêtre_interface extends javax.swing.JFrame {
                            }
                            else if(t==0){
                                o.Boule0();
+                               int var=0;
+                               int L = ligne;
+                               int C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   L += 1 ;
+                                   if (L> 7){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , colonne,8, 20) ;
+                                   
+                                   
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][colonne].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][colonne].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][colonne].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][colonne].Boule3();
+                                       var = 1;
+                                   }
+                                   
+                               }
+                               var=0;
+                               L = ligne;
+                               C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   L -= 1 ;
+                                   if (L< 0){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , colonne,8, 20) ;
+                                   
+                                   
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][colonne].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][colonne].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][colonne].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][colonne].Boule3();
+                                       var = 1;
+                                   }
+                               }
+                               
+                               var=0;
+                               L = ligne;
+                               C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C += 1 ;
+                                   if (C== 20){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(ligne , C,8, 20) ;
+                                   if(L1C0 ==1){
+                                       plateau.grille[ligne][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[ligne][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[ligne][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[ligne][C].Boule3();
+                                       var = 1;
+                                   } 
+                               }
+                               
+                               var=0;
+                               L = ligne;
+                               C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C -= 1 ;
+                                   if (C<0){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(ligne , C,8, 20) ;
+                                  
+                                   if(L1C0 ==1){
+                                       plateau.grille[ligne][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[ligne][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[ligne][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[ligne][C].Boule3();
+                                       var = 1;
+                                   }
+                                   
+                               }
+                               var=0;
+                               L = ligne;
+                               C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C += 1 ;
+                                   L +=1;
+                                   
+                                   if (C==20 || L>7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , C,8, 20);
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][C].Boule3();
+                                       var = 1;
+                                   }   
+                               }
+                               
+                               var=0;
+                               L = ligne;
+                               C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C -= 1 ;
+                                   L +=1;
+                                   System.out.println(L);
+                                   System.out.println(C); 
+                                   if (C<0 || L>7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
+                                   
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][C].Boule3();
+                                       var = 1;
+                                   }
+                                   
+                               }
+                                var=0;
+                                L = ligne;
+                                C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C += 1 ;
+                                   L -=1;
+                                   if (C==20 || L<0 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
+                                 
+                                   
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][C].Boule3();
+                                       var = 1;
+                                   }
+                                   
+                               }
+                                var=0;
+                                L = ligne;
+                                C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C -= 1 ;
+                                   L -=1;
+                                   
+                                   
+                                   
+                                   if (C<0 || L<0 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
+                                   System.out.println(L1C0);
+                                   
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][C].Boule3();
+                                       var = 1;
+                                   }
+                                   
+                               }
+                               
+                               var=0;
+                               L = ligne;
+                               C = colonne;
+                               while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   C -= 1 ;
+                                   L +=1;
+                                   if (C<0 || L==7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       break;
+                                   }
+                                   int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
+                                  
+                                   if(L1C0 ==1){
+                                       plateau.grille[L][C].Boule1();
+                                       var=1;
+                                   }else if (L1C0 ==0){
+                                       plateau.grille[L][C].Boule0();
+                                   }else if (L1C0 ==2){
+                                       plateau.grille[L][C].Boule2();
+                                       var = 1;
+                                   }else if (L1C0 ==3){
+                                       plateau.grille[L][C].Boule3();
+                                       var = 1;
+                                   }
+                                   
+                               }
+                               
+                               
+                               
+                               
+                               
+                               
                                inter_déminage.repaint();
                            }
                            else if(t==2){
@@ -569,8 +807,11 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 inter_déminage.add(CellGraph);
             }
         }
-
         inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris 
+        niveau3.setEnabled(false);
+        niveau2.setEnabled(false);
+        niveau1.setEnabled(false);
+        
 
     }//GEN-LAST:event_niveau3ActionPerformed
 

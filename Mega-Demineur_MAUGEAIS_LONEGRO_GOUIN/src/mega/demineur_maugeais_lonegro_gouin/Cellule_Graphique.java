@@ -35,10 +35,10 @@ public class Cellule_Graphique extends JButton{
         if(CelluleAssociee.presenceVie()==true){ //si il y a une vie on affiche l'image de la vie
             setIcon(img_vie);
         }
-        else if(CelluleAssociee.presenceBombe()==true){ //si il y a une bombe on affcihe l'image d'une bombe 
+        else if(CelluleAssociee.activationBombe==true){ //si il y a une bombe on affcihe l'image d'une bombe 
            setIcon(img_bombe);
         }
-        else if(CelluleAssociee.presenceKit()==true){ // si il y a un kit on affiche l'image du kit
+        else if(CelluleAssociee.activationKit==true){ // si il y a un kit on affiche l'image du kit
             setIcon(img_kit);
         }
         else if(CelluleAssociee.B0==true ){ //si il n'y a pas de bombe on affiche une case d'herbe
