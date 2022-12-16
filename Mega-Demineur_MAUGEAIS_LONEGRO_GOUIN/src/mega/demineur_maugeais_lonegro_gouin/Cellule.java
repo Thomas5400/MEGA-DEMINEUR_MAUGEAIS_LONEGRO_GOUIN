@@ -31,37 +31,39 @@ public class Cellule { //on créer la classe Cellule
         this.avoirKit = false;
         this.activationKit =false;
     }
-    public void Boule0(){
+    
+    public void Boule0(){// méthode qui sert à passer B0 à true qui va nous permettre à afficher pour la suite la bonne case 
         B0=true;
         
     }
-    public void Boule1(){
+    public void Boule1(){ // méthode qui sert à passer B1 à true qui nous permettra d'afficher la bonne image 
+        //si jamais il n'y a qu'une bombe autour de la case on active B1 pour pouvoir afficher la bonne image
         B1=true;
         
     }
-    public void Boule2(){
+    public void Boule2(){//même principe que B1 mais pour deux bombes
         B2=true;
         
     }
-    public void Boule3(){
+    public void Boule3(){//idem pour trois bombes
         B3=true;
     }
-    public boolean ExplosionBombe() {
+    public boolean ExplosionBombe() { // si jamais on est tombé sur une bombe c'est cette méthode que l'on appelera pour activé la bombe et afficher la bone image
         this.activationBombe = true;
         return this.activationBombe;
     }
     
-    public boolean Usagekit(){
+    public boolean Usagekit(){  // même principe que pour explosionBombe mais avec un kit 
         this.activationKit=true;
         return this.activationKit;
     }
 
-    public boolean supprimervie() {
+    public boolean supprimervie() { // méthode qui sert à supprimer une vie qui sera utilise pour ne pas afficher que des kits sur le panel où il y a tous les boutons du jeu 
         this.vie = false;
         return this.vie;
     }
     
-    public boolean Ajoutervie(){
+    public boolean Ajoutervie(){ 
         this.vie = true ;
         return this.vie;
     }
@@ -82,7 +84,7 @@ public class Cellule { //on créer la classe Cellule
         }
     }
 
-    public void placerBombe() {
+    public void placerBombe() {  // méthode qui permte de placer une bombe 
         this.bombeCourant = true;
     }
     

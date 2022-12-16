@@ -32,26 +32,26 @@ public class Cellule_Graphique extends JButton{
     public void paintComponent(Graphics G){
         super.paintComponent(G);
         
-        if(CelluleAssociee.presenceVie()==true){
+        if(CelluleAssociee.presenceVie()==true){ //si il y a une vie on affiche l'image de la vie
             setIcon(img_vie);
         }
-        else if(CelluleAssociee.presenceBombe()==true){
+        else if(CelluleAssociee.presenceBombe()==true){ //si il y a une bombe on affcihe l'image d'une bombe 
            setIcon(img_bombe);
         }
-        else if(CelluleAssociee.presenceKit()==true){
+        else if(CelluleAssociee.presenceKit()==true){ // si il y a un kit on affiche l'image du kit
             setIcon(img_kit);
         }
-        else if(CelluleAssociee.B0==true ){
+        else if(CelluleAssociee.B0==true ){ //si il n'y a pas de bombe on affiche une case d'herbe
             setIcon(img_B0);
             }
-        else if(CelluleAssociee.B1==true ){
+        else if(CelluleAssociee.B1==true ){ // si il y a une bombe autour de la case on affiche un indicateur qui dit le qu'il y a une bombe
             setIcon(img_B1);
                 
             }
-        else if(CelluleAssociee.B2==true ){
+        else if(CelluleAssociee.B2==true ){ // si il y a deux  bombe autour de la case on affiche un indicateur qui dit le qu'il y a deux bombe
             setIcon(img_B2);
             }
-        else if(CelluleAssociee.B3==true ){
+        else if(CelluleAssociee.B3==true ){ // si il y a trois bombe autour de la case on affiche un indicateur qui dit le qu'il y a trois bombe
             setIcon(img_B3);
             }
         else{    

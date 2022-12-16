@@ -246,40 +246,41 @@ public class fenêtre_interface extends javax.swing.JFrame {
         int l = 4;
         int c = 14;
 
-        Grille plateau = new Grille(l, c);
-        placerBombes(plateau, l, c);
-        placerKits(plateau, l, c);
-        inter_déminage.setLayout(new java.awt.GridLayout(l, c));
+        Grille plateau = new Grille(l, c);  //on créer un plateau de l ligne et c colonne 
+        placerBombes(plateau, l, c);  //ensuite on place les bombes
+        placerKits(plateau, l, c);  //puis les kits 
+        inter_déminage.setLayout(new java.awt.GridLayout(l, c));  //on modifie le grid layout du panel où se situe les boutons 
 
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
             for (int j = 0; j < c; j++) {
 
-                plateau.grille[i][j].supprimervie();
+                plateau.grille[i][j].supprimervie();  // on supprime les vies qui sont dans les cases pour pouvoir avoir l'affichage voulu 
                 Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
-                int ligne = i;
-                int colonne = j;
+                int ligne = i; // on pose notre nombre de ligne dans une variable
+                int colonne = j;  // idem pour les colonnes 
+                
                 //Partie du code qui servira à faire des actions avec les boutons de la grille 
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        Cellule o = CellGraph.CelluleAssociee;
-                        int avoirnbkit = Integer.parseInt(nb_Kits.getText());// cette partie sert tout simplement à ajouter la vie du kit automatiquement si on a un kit 
-                        if (avoirnbkit != 0) {
+                        Cellule o = CellGraph.CelluleAssociee;  // on créer une variable o qui servira de receptacle lorsque l'on cliquera sur un bouton
+                        int avoirnbkit = Integer.parseInt(nb_Kits.getText());// on met le nombre de kit que le joueur possède dans une variable  
+                        if (avoirnbkit != 0) {  // si on a des kits
                             for (int k = 2; k >= 0; k--) {
-                                if (plateau_vie.grille[0][k].presenceVie() == false) {
-                                    plateau_vie.grille[0][k].Ajoutervie();
+                                if (plateau_vie.grille[0][k].presenceVie() == false) {  // et si le joueur n'a pas toutes ces vies 
+                                    plateau_vie.grille[0][k].Ajoutervie(); // on lui ajoute une vie 
                                     affichage_vie.repaint();
-                                    avoirnbkit -= 1;
+                                    avoirnbkit -= 1;  // on enlève un kit 
                                     nb_Kits.setText(avoirnbkit + "");
                                     break;
                                 }
                             }
                         }
-                        if (o.bombeCourant == true) {
-                            o.ExplosionBombe();
-                            inter_déminage.repaint();
+                        if (o.bombeCourant == true) {  // si le bouton cliqué est une bombe 
+                            o.ExplosionBombe();  // on active la bombe
+                            inter_déminage.repaint();  // on repeint l'interface
                             message.setText("Un Cell a explosé : Maître Kaioh n'est pas content"); // Affichage si le joueur fait exploser une bombe Cell
 
-                            for (int i = 2; i >= 0; i--) {
+                            for (int i = 2; i >= 0; i--) {  // et on enlève une vie 
                                 if (plateau_vie.grille[0][i].presenceVie() == true) {
                                     plateau_vie.grille[0][i].supprimervie();
 
@@ -292,31 +293,31 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
-                        } else if (o.avoirKit == true) {
-                            o.Usagekit();
-                            inter_déminage.repaint();
+                        } else if (o.avoirKit == true) {  // si le bouton cliqué est une kit
+                            o.Usagekit();  // on utilise le kit 
+                            inter_déminage.repaint();  // on repeint l'interface 
                             
-                            for (int i = 2; i >= 0; i--) {
+                            for (int i = 2; i >= 0; i--) { // si le joueur n'a pas toutes ces vies on lui ajoute directement une vie 
                                 if (plateau_vie.grille[0][i].presenceVie() == false) {
                                     plateau_vie.grille[0][i].Ajoutervie();
                                     affichage_vie.repaint();
                                     break;
-                                } else {
+                                } else {// sinon on lui ajoute 1 a son nombre de kits
                                     nbkit += 1;
                                     nb_Kits.setText(nbkit + "");
                                     break;
                                 }
                             }
                         }
-                        else {
+                        else {  // si le bouton cliqué n'est ni une bombe ni un kit 
                             
-                           int t =  plateau.decouverteGrille(ligne , colonne, 4, 14);
+                           int t =  plateau.decouverteGrille(ligne , colonne, 4, 14);  // alors on cherche si il y a des bombes à proximité 
                            System.out.println(t);
-                           if(t==1) {
-                               o.Boule1();
+                           if(t==1) { // si t =1 alors il y a une bombe autour de la case 
+                               o.Boule1();  // dans ce cas on active la première boule pour afficher l'image voulu 
                                inter_déminage.repaint();
                            }
-                           else if(t==0){
+                           else if(t==0){ //idem si il n'y a pas de boule 
                                o.Boule0();
                                inter_déminage.repaint();
                            }
