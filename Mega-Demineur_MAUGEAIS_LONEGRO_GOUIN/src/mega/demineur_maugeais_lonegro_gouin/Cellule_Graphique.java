@@ -32,10 +32,10 @@ public class Cellule_Graphique extends JButton{
         if(CelluleAssociee.presenceVie()==true){
             setIcon(img_vie);
         }
-        else if(CelluleAssociee.presenceBombe()==true){
+        else if(CelluleAssociee.activationBombe==true){
            setIcon(img_bombe);
         }
-        else if(CelluleAssociee.Usagekit()==true){
+        else if(CelluleAssociee.activationKit==true){
             setIcon(img_kit);
         }
         else{
