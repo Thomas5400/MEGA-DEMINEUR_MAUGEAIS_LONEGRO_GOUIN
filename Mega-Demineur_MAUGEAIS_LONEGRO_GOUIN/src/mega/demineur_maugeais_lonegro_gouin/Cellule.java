@@ -15,16 +15,37 @@ public class Cellule { //on créer la classe Cellule
     boolean avoirKit;
     boolean vie;
     boolean activationKit; //ajout d'un nouvel atribue
+    boolean B1;// on créer trois boules qui représente le nombre de bombes à proximité de la case
+    boolean B2;
+    boolean B3;
+    boolean B0;
     
-    
-    public Cellule() { //constructeur de la classe 
+    public Cellule() { //constructeur de la classe
+        B0= false;
+        B3 = false;
+        B2 = false;
+        B1 =false;
         this.vie = true;
         this.activationBombe = false;
         this.bombeCourant = false;
         this.avoirKit = false;
         this.activationKit =false;
     }
-
+    public void Boule0(){
+        B0=true;
+        
+    }
+    public void Boule1(){
+        B1=true;
+        
+    }
+    public void Boule2(){
+        B2=true;
+        
+    }
+    public void Boule3(){
+        B3=true;
+    }
     public boolean ExplosionBombe() {
         this.activationBombe = true;
         return this.activationBombe;

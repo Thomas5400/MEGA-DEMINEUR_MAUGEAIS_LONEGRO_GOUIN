@@ -4,23 +4,22 @@
  */
 package mega.demineur_maugeais_lonegro_gouin;
 
-
 /**
  *
  * @author doria
  */
 public class fenêtre_interface extends javax.swing.JFrame {
+
     Grille plateau_vie;
+    int nbkit = 0;
     /**
      * Creates new form fenêtre_interface
      */
     public fenêtre_interface() {
         initComponents();
 
-
-        
-
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -227,36 +226,31 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
     private void nom_joueur1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nom_joueur1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_nom_joueur1ActionPerformed
 
     private void niveau1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_niveau1ActionPerformed
         // TODO add your handling code here:
-        
-        
+
         initComponents();
-        
+
         // On a recopié le code pour 3 difficultés différentes ici mode facile
-        
         //partie affiche le nombre de vie
         plateau_vie = new Grille(1, 3);//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
         for (int i = 0; i < 3; i++) {//boucle pour placer les images dans le bon panel 
             Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
             affichage_vie.add(CellVie);
         }
-        affichage_vie.repaint();  
-        
-        
-        
-        
+        affichage_vie.repaint();
+
         int l = 4;
         int c = 14;
-        
+
         Grille plateau = new Grille(l, c);
         placerBombes(plateau, l, c);
         placerKits(plateau, l, c);
         inter_déminage.setLayout(new java.awt.GridLayout(l, c));
-        
+
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
             for (int j = 0; j < c; j++) {
 
@@ -268,17 +262,17 @@ public class fenêtre_interface extends javax.swing.JFrame {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         Cellule o = CellGraph.CelluleAssociee;
                         int avoirnbkit = Integer.parseInt(nb_Kits.getText());// cette partie sert tout simplement à ajouter la vie du kit automatiquement si on a un kit 
-                            if(avoirnbkit!=0){
-                                for(int k =2 ; k>=0; k--){
-                                    if(plateau_vie.grille[0][k].presenceVie()==false){
+                        if (avoirnbkit != 0) {
+                            for (int k = 2; k >= 0; k--) {
+                                if (plateau_vie.grille[0][k].presenceVie() == false) {
                                     plateau_vie.grille[0][k].Ajoutervie();
-                                    affichage_vie.repaint();  
+                                    affichage_vie.repaint();
                                     avoirnbkit -= 1;
                                     nb_Kits.setText(avoirnbkit + "");
                                     break;
-                                    }
                                 }
                             }
+                        }
                         if (o.bombeCourant == true) {
                             o.ExplosionBombe();
                             inter_déminage.repaint();
@@ -297,19 +291,18 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
-                        }
-                        else if(o.avoirKit==true){
+                        } else if (o.avoirKit == true) {
                             o.Usagekit();
                             inter_déminage.repaint();
-                            int nbkit=0;
-                            for(int i=2 ; i>=0; i--){
-                                if(plateau_vie.grille[0][i].presenceVie()==false){
+                            
+                            for (int i = 2; i >= 0; i--) {
+                                if (plateau_vie.grille[0][i].presenceVie() == false) {
                                     plateau_vie.grille[0][i].Ajoutervie();
-                                    affichage_vie.repaint();  
+                                    affichage_vie.repaint();
                                     break;
-                                }else{
-                                    nbkit +=1;
-                                    nb_Kits.setText( nbkit + "");
+                                } else {
+                                    nbkit += 1;
+                                    nb_Kits.setText(nbkit + "");
                                     break;
                                 }
                             }
@@ -323,57 +316,55 @@ public class fenêtre_interface extends javax.swing.JFrame {
         }
 
         inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris         
-        
+
 
     }//GEN-LAST:event_niveau1ActionPerformed
 
     private void niveau2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_niveau2ActionPerformed
         // TODO add your handling code here:
-        
+
         initComponents();
-       
+
         // On a recopié le code pour 3 difficultés différentes ici mode normal
-        
         //partie affiche le nombre de vie
         plateau_vie = new Grille(1, 3);//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
         for (int i = 0; i < 3; i++) {//boucle pour placer les images dans le bon panel 
             Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
             affichage_vie.add(CellVie);
         }
-        affichage_vie.repaint();  
-        
-        
-        
-        
+        affichage_vie.repaint();
+
         int l = 6;
         int c = 17;
         Grille plateau = new Grille(l, c);
         placerBombes(plateau, l, c);
         placerKits(plateau, l, c);// onplace les kits de déminage
         inter_déminage.setLayout(new java.awt.GridLayout(l, c));
-        
+
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
             for (int j = 0; j < c; j++) {
-
+                
                 plateau.grille[i][j].supprimervie();
                 Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
-
+                int ligne = i ;
+                int colonne = j;
                 //Partie du code qui servira à faire des actions avec les boutons de la grille 
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
                         Cellule o = CellGraph.CelluleAssociee;
+                        
                         if (o.bombeCourant == true) {
                             o.ExplosionBombe();
-                            
+
                             int avoirnbkit = Integer.parseInt(nb_Kits.getText());
-                            if(avoirnbkit!=0){
-                                for(int k =2 ; k>=0; k--){
-                                    if(plateau_vie.grille[0][k].presenceVie()==false){
-                                    plateau_vie.grille[0][k].Ajoutervie();
-                                    affichage_vie.repaint();  
-                                    avoirnbkit -= 1;
-                                    nb_Kits.setText(avoirnbkit + "");
-                                    break;
+                            if (avoirnbkit != 0) {
+                                for (int k = 2; k >= 0; k--) {
+                                    if (plateau_vie.grille[0][k].presenceVie() == false) {
+                                        plateau_vie.grille[0][k].Ajoutervie();
+                                        affichage_vie.repaint();
+                                        avoirnbkit -= 1;
+                                        nb_Kits.setText(avoirnbkit + "");
+                                        break;
                                     }
                                 }
                             }
@@ -393,24 +384,45 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
-                        }
-                        else if(o.avoirKit==true){
+                        } else if (o.avoirKit == true) {
                             o.Usagekit();
                             o.supprimerKit();
                             inter_déminage.repaint();
-                            int nbkit=0;
-                            for(int i=2 ; i>=0; i--){
-                                if(plateau_vie.grille[0][i].presenceVie()==false){
+                            
+                            for (int i = 2; i >= 0; i--) {
+                                if (plateau_vie.grille[0][i].presenceVie() == false) {
                                     plateau_vie.grille[0][i].Ajoutervie();
-                                    affichage_vie.repaint();  
+                                    affichage_vie.repaint();
                                     break;
-                                }else{
-                                    nbkit +=1;
-                                    nb_Kits.setText( nbkit + "");
+                                } else {
+                                    nbkit += 1;
+                                    nb_Kits.setText(nbkit + "");
                                     break;
                                 }
                             }
+                        } else {
+                            
+                           int t =  plateau.decouverteGrille(ligne , colonne, 6, 17);
+                           System.out.println(t);
+                           if(t==1) {
+                               o.Boule1();
+                               inter_déminage.repaint();
+                           }
+                           else if(t==0){
+                               o.Boule0();
+                               inter_déminage.repaint();
+                           }
+                           else if(t==2){
+                              o.Boule2();
+                              inter_déminage.repaint();
+                           }else{
+                              o.Boule3();
+                              inter_déminage.repaint();
+                           }
+                           
+                           
                         }
+                       
 
                     }
                 });
@@ -424,56 +436,53 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
     private void niveau3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_niveau3ActionPerformed
         // TODO add your handling code here:
-        
+
         initComponents();
-        
+
         // On a recopié le code pour 3 difficultés différentes ici mode difficile
-        
         //partie affiche le nombre de vie
         plateau_vie = new Grille(1, 3);//on creer un plateau_vie qui sert à placer les images de vie comme on a trois vie on creer une grille de 1 ligne et 3 colonne
         for (int i = 0; i < 3; i++) {//boucle pour placer les images dans le bon panel 
             Cellule_Graphique CellVie = new Cellule_Graphique(plateau_vie.grille[0][i]);
             affichage_vie.add(CellVie);
         }
-        affichage_vie.repaint();  
-        
-        
-        
-        
+        affichage_vie.repaint();
+
         int l = 8;
         int c = 20;
         Grille plateau = new Grille(l, c);
-        
+
         placerBombes(plateau, l, c);
         placerKits(plateau, l, c);
         inter_déminage.setLayout(new java.awt.GridLayout(l, c));
-        
+
         for (int i = l - 1; i >= 0; i--) {//même principe que le plateau de vie mais avec deux boucle car le nombre de vie est variable 
             for (int j = 0; j < c; j++) {
                 
                 plateau.grille[i][j].supprimervie();
                 Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
-
+                
                 //Partie du code qui servira à faire des actions avec les boutons de la grille 
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        
                         Cellule o = CellGraph.CelluleAssociee;
                         if (o.bombeCourant == true) {
                             o.ExplosionBombe();
                             int avoirnbkit = Integer.parseInt(nb_Kits.getText());
-                            if(avoirnbkit!=0){
-                                for(int k =2 ; k>=0; k--){
-                                    if(plateau_vie.grille[0][k].presenceVie()==false){
-                                    plateau_vie.grille[0][k].Ajoutervie();
-                                    affichage_vie.repaint();  
-                                    avoirnbkit -= 1;
-                                    nb_Kits.setText(avoirnbkit + "");
-                                    break;
+                            if (avoirnbkit != 0) {
+                                for (int k = 2; k >= 0; k--) {
+                                    if (plateau_vie.grille[0][k].presenceVie() == false) {
+                                        plateau_vie.grille[0][k].Ajoutervie();
+                                        affichage_vie.repaint();
+                                        avoirnbkit -= 1;
+                                        nb_Kits.setText(avoirnbkit + "");
+                                        break;
                                     }
                                 }
                             }
                             inter_déminage.repaint();
-                            
+
                             message.setText("Un Cell a explosé : Maître Kaioh n'est pas content"); // Affichage si le joueur fait exploser une bombe Cell
 
                             for (int i = 2; i >= 0; i--) {
@@ -489,20 +498,19 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
-                        }
-                        else if(o.avoirKit==true){
+                        } else if (o.avoirKit == true) {
                             o.Usagekit();
                             inter_déminage.repaint();
-                            int nbkit=0;
+                            
 
-                            for(int i=2 ; i>=0; i--){
-                                if(plateau_vie.grille[0][i].presenceVie()==false){
+                            for (int i = 2; i >= 0; i--) {
+                                if (plateau_vie.grille[0][i].presenceVie() == false) {
                                     plateau_vie.grille[0][i].Ajoutervie();
-                                    affichage_vie.repaint();  
+                                    affichage_vie.repaint();
                                     break;
-                                }else{
-                                    nbkit +=1;
-                                    nb_Kits.setText( nbkit + "");
+                                } else {
+                                    nbkit += 1;
+                                    nb_Kits.setText(nbkit + "");
                                     break;
                                 }
                             }
@@ -510,13 +518,13 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                     }
                 });
-                    
+
                 inter_déminage.add(CellGraph);
             }
         }
-        
+
         inter_déminage.repaint(); // on rafraîchit l'affichage (sans devoir passer la souris 
-        
+
     }//GEN-LAST:event_niveau3ActionPerformed
 
     /**
@@ -554,41 +562,38 @@ public class fenêtre_interface extends javax.swing.JFrame {
         });
     }
 
-    
-    public void placerBombes(Grille plateau, int l , int c){// Méthode nous permettant de placer des bombes aléatoirement sur notre plateau
+    public void placerBombes(Grille plateau, int l, int c) {// Méthode nous permettant de placer des bombes aléatoirement sur notre plateau
         int nbMax = 0;
-        nbMax = (l*c)/(l/2);
-        for(int i=0; i<nbMax; i++){
-            int j=0;
-            while(j==0){       
-                int x = (int) (Math.random() * (l+3 - 3));// on choisit une valeur aléatoire
-                int y = (int) (Math.random() * (c+3 - 3));//idem
-                if(plateau.presenceBombe(x, y)==false){
-                    j=1;
+        nbMax = (l * c) / (l);
+        for (int i = 0; i < nbMax; i++) {
+            int j = 0;
+            while (j == 0) {
+                int x = (int) (Math.random() * (l + 3 - 3));// on choisit une valeur aléatoire
+                int y = (int) (Math.random() * (c + 3 - 3));//idem
+                if (plateau.presenceBombe(x, y) == false) {
+                    j = 1;
                     plateau.placerBombe(x, y);
                 }
             }
-            
+
         }
     }
-    public void placerKits(Grille plateau, int l , int c){// Méthode nous permettant de placer des Kits de déminages aléatoirement sur notre plateau
-        
-        for(int i=0; i<4; i++){
-            int j=0;
-            while(j==0){       
-                int x = (int) (Math.random() * (l+3 - 3));// on choisit une valeur aléatoire
-                int y = (int) (Math.random() * (c+3 - 3));//idem
-                if(plateau.presenceKit(x, y)==false && plateau.presenceBombe(x, y)==false){
-                    j=1;
+
+    public void placerKits(Grille plateau, int l, int c) {// Méthode nous permettant de placer des Kits de déminages aléatoirement sur notre plateau
+
+        for (int i = 0; i < 4; i++) {
+            int j = 0;
+            while (j == 0) {
+                int x = (int) (Math.random() * (l + 3 - 3));// on choisit une valeur aléatoire
+                int y = (int) (Math.random() * (c + 3 - 3));//idem
+                if (plateau.presenceKit(x, y) == false && plateau.presenceBombe(x, y) == false) {
+                    j = 1;
                     plateau.placagedeKit(x, y);
                 }
             }
-            
+
         }
     }
-    
-    
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -612,6 +617,5 @@ public class fenêtre_interface extends javax.swing.JFrame {
     private javax.swing.JLabel txt_Taille;
     private javax.swing.JLabel txt_Vies;
     // End of variables declaration//GEN-END:variables
- 
-   
+
 }

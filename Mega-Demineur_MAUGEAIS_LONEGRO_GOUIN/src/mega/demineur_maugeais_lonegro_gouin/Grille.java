@@ -44,57 +44,49 @@ public class Grille {
         grille[x][y].placerKit();
     }
     
-    public int decouverteGrille (int i, int j) { // méthode qui va permettre de savoir si il y a des bombes dans les cases adjacentes
+    public int decouverteGrille (int i, int j, int lignemax, int colonnemax) { // méthode qui va permettre de savoir si il y a des bombes dans les cases adjacentes
         int a = 0;
-        if (grille[i+1][j].presenceBombe() == true ){ //Cas pour la cellule positionée en i+1
-            if (grille[i+1][j+1].presenceBombe() == true && grille[i+1][j-1].presenceBombe() == true ){ //Si il y a une bombe dans les cellules à côté de celle avec une bombe on renvoie le nombre de bombes (ici 3)
-                a = 3;
-            }
-            if (grille[i+1][j+1].presenceBombe() == true && grille[i+1][j-1].presenceBombe() == true ){ //Si il y a une bombe dans la cellules à côté de celle avec une bombe on renvoie le nombre de bombes (ici 2)
-                a = 2;
-            }
-            else { // si il n'y a pas de bombes dans les cellules où se trouve la première bombe on renvoie son nombre (ici 1)
-                a = 1;
-            }
+        if (i+1 < lignemax  && grille[i+1][j].presenceBombe() == true ){ //Cas pour la cellule positionée en i+1
+            a += 1;
         }
-        else {
-            a = 0; //si il n'y a pas de bombe on renvoie 0
-        }
+        if ( j+1< colonnemax && i+1 < lignemax  &&  grille[i+1][j+1].presenceBombe() == true ){//&&  grille[i+1][j-1].presenceBombe() == true ){ //Si il y a une bombe dans les cellules à côté de celle avec une bombe on renvoie le nombre de bombes (ici 3)
+                a += 1;
+            }
+        if (j-1 >=0  && i+1 < lignemax  &&grille[i+1][j-1].presenceBombe() == true ){
+                a += 1;
+            }
+           
+        
+        
         
         
         int b = 0;
-        if (grille[i-1][j].presenceBombe() == true ){ //Cas pour la cellule positionée en i-1
-            if (grille[i-1][j+1].presenceBombe() == true && grille[i-1][j-1].presenceBombe() == true ){ //Si il y a une bombe dans les cellules à côté de celle avec une bombe on renvoie le nombre de bombes (ici 3)
-                b = 3;
-            }
-            if (grille[i-1][j+1].presenceBombe() == true && grille[i-1][j-1].presenceBombe() == true ){ //Si il y a une bombe dans la cellules à côté de celle avec une bombe on renvoie le nombre de bombes (ici 2)
-                b = 2;
-            }
-            else { // si il n'y a pas de bombes dans les cellules où se trouve la première bombe on renvoie son nombre (ici 1)
-                b = 1;
-            }
+        if (i-1>=0 && grille[i-1][j].presenceBombe() == true ){ //Cas pour la cellule positionée en i-1
+            b +=1;
         }
-        else {
-            return b; //si il n'y a pas de bombe on renvoie 0
+        if(i-1>=0 && j+1 < colonnemax && j-1 >=0 && grille[i-1][j+1].presenceBombe() == true){
+            b +=1;
         }
+        if (i-1>=0 && j-1 >=0 &&  grille[i-1][j-1].presenceBombe() == true ){ //Si il y a une bombe dans les cellules à côté de celle avec une bombe on renvoie le nombre de bombes (ici 3)
+                b += 1;
+         }
+            
+        
+        
         
         
         int c = 0;
-        if (grille[i][j+1].presenceBombe() == true ){ //Cas pour la cellule positionée en j+1
+        if (j+1<colonnemax && grille[i][j+1].presenceBombe() == true ){ //Cas pour la cellule positionée en j+1
             c = 1;
         }
-        else {
-            c= 0; //si il n'y a pas de bombe on renvoie 0
-        }
+       
         
         
         int d = 0;
-        if (grille[i][j-1].presenceBombe() == true ){ //Cas pour la cellule positionée en j-1
+        if (   j-1>=0 && grille[i][j-1].presenceBombe() == true ){ //Cas pour la cellule positionée en j-1
             d = 1;
         }
-        else {
-            d = 0; //si il n'y a pas de bombe on renvoie 0
-        }
+       
         return a + b + c + d; //on renvoie le nombre total de bombe autour de notre cellule 
         
     }
