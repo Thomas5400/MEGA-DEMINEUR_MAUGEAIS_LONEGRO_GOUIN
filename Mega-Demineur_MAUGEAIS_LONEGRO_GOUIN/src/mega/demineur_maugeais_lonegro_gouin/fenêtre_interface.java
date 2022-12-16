@@ -256,7 +256,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                 plateau.grille[i][j].supprimervie();
                 Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
-
+                int ligne = i;
+                int colonne = j;
                 //Partie du code qui servira à faire des actions avec les boutons de la grille 
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,6 +307,28 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     break;
                                 }
                             }
+                        }
+                        else {
+                            
+                           int t =  plateau.decouverteGrille(ligne , colonne, 4, 14);
+                           System.out.println(t);
+                           if(t==1) {
+                               o.Boule1();
+                               inter_déminage.repaint();
+                           }
+                           else if(t==0){
+                               o.Boule0();
+                               inter_déminage.repaint();
+                           }
+                           else if(t==2){
+                              o.Boule2();
+                              inter_déminage.repaint();
+                           }else{
+                              o.Boule3();
+                              inter_déminage.repaint();
+                           }
+                           
+                           
                         }
 
                     }
@@ -461,7 +484,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                 
                 plateau.grille[i][j].supprimervie();
                 Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
-                
+                int ligne =i ;
+                int colonne = j;
                 //Partie du code qui servira à faire des actions avec les boutons de la grille 
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,6 +538,28 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     break;
                                 }
                             }
+                        }
+                        else {
+                            
+                           int t =  plateau.decouverteGrille(ligne , colonne, 8, 20);
+                           System.out.println(t);
+                           if(t==1) {
+                               o.Boule1();
+                               inter_déminage.repaint();
+                           }
+                           else if(t==0){
+                               o.Boule0();
+                               inter_déminage.repaint();
+                           }
+                           else if(t==2){
+                              o.Boule2();
+                              inter_déminage.repaint();
+                           }else{
+                              o.Boule3();
+                              inter_déminage.repaint();
+                           }
+                           
+                           
                         }
 
                     }
