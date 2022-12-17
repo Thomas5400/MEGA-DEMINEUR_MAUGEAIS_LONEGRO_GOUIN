@@ -555,11 +555,14 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                int var=0;
                                int L = ligne;
                                int C = colonne;
+                             
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    L += 1 ;
                                    if (L> 7){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       
                                        break;
                                    }
+                                   
                                    int L1C0 = plateau.decouverteGrille(L , colonne,8, 20) ;
                                    
                                    
@@ -583,8 +586,10 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    L -= 1 ;
                                    if (L< 0){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                     
                                        break;
                                    }
+                                   
                                    int L1C0 = plateau.decouverteGrille(L , colonne,8, 20) ;
                                    
                                    
@@ -605,6 +610,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                var=0;
                                L = ligne;
                                C = colonne;
+                             
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    C += 1 ;
                                    if (C== 20){  //si L depasse 8 alors on ne se trouev plus dans la grille 
@@ -628,6 +634,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                var=0;
                                L = ligne;
                                C = colonne;
+                              
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    C -= 1 ;
                                    if (C<0){  //si L depasse 8 alors on ne se trouev plus dans la grille 
@@ -649,16 +656,22 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                    }
                                    
                                }
+                               
                                var=0;
                                L = ligne;
                                C = colonne;
+                               System.out.println(ligne);
+                           
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    C += 1 ;
                                    L +=1;
                                    
                                    if (C==20 || L>7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                      
+                                      
                                        break;
                                    }
+                                  
                                    int L1C0 = plateau.decouverteGrille(L , C,8, 20);
                                    if(L1C0 ==1){
                                        plateau.grille[L][C].Boule1();
@@ -677,14 +690,18 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                var=0;
                                L = ligne;
                                C = colonne;
+                               
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                   
                                    C -= 1 ;
                                    L +=1;
-                                   System.out.println(L);
-                                   System.out.println(C); 
+                                   
+                                   
                                    if (C<0 || L>7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                       
                                        break;
                                    }
+                                   
                                    int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
                                    
                                    if(L1C0 ==1){
@@ -701,15 +718,18 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                    }
                                    
                                }
+                               
                                 var=0;
                                 L = ligne;
                                 C = colonne;
+                                
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    C += 1 ;
                                    L -=1;
                                    if (C==20 || L<0 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
                                        break;
                                    }
+                                  
                                    int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
                                  
                                    
@@ -727,9 +747,11 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                    }
                                    
                                }
+                               
                                 var=0;
                                 L = ligne;
                                 C = colonne;
+                               
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    C -= 1 ;
                                    L -=1;
@@ -739,8 +761,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                    if (C<0 || L<0 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
                                        break;
                                    }
+                                   
                                    int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
-                                   System.out.println(L1C0);
+                                   
                                    
                                    if(L1C0 ==1){
                                        plateau.grille[L][C].Boule1();
@@ -763,7 +786,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                while(var==0){ // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                    C -= 1 ;
                                    L +=1;
-                                   if (C<0 || L==7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                   if (C<0 || L>7 ){  //si L depasse 8 alors on ne se trouev plus dans la grille 
                                        break;
                                    }
                                    int L1C0 = plateau.decouverteGrille(L , C,8, 20) ;
