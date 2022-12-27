@@ -428,6 +428,491 @@ public class fenêtre_interface extends javax.swing.JFrame {
                             } else if (t == 0) {
                                 o.Boule0();
 
+                                int var = 0; // variable qui sert à faire des boucles 
+                                int L = ligne;
+                                int C = colonne;
+                                int var1 = 0;
+                                int LH;  // LH pour ligne en haut variable qui sert a decouvrir les case a la ligne +1  
+                                
+                                int L1;  
+                                int var2 = 0;
+                                int LB;  // LH pour ligne en haut variable qui sert a decouvrir les case a la ligne -1  
+                                int DDD;  // DDD pour diagonale descendante droite
+                                int DDG;  // DDG pour diagonale descendante gauche
+                                int L2;
+                                var = 0;
+                                int LD;   // LD pour ligne droite 
+                                int LG;   // LG pour ligne gauche
+                                int DMD;  // DMD pour  diagonale montante droite
+                                int DMG;  // DMG pour diagonale montante gauche 
+                                
+
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                    L += 1; // à chaque fois on augmente d'une lig,e 
+                                    
+                                    if (L > 5) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+
+                                        break;
+                                    }
+
+                                    LH = plateau.decouverteGrille(L, C, 6, 17); // on regarde la case à la ligne +1 
+
+                                    if (LH == 1) {  // si LH est égale à 1 alors la case d'une dessus comporte une bombe autour d'elle 
+                                        plateau.grille[L][colonne].Boule1();  // on met donc la case à jour 
+                                        var = 1;  // on met var egal à 1 pour arrêter la boucle 
+                                    } else if (LH == 0) {  // si LH est egal à  0 alors la case du dessus ne comporte pas de bombe autour d'elle 
+                                        plateau.grille[L][colonne].Boule0();  // on met seulement a case à jour on laisse var egale à 0 pour continuer la boucle 
+                                    } else if (LH == 2) {  // si LH est égale à 2 il y a 2 bombe autour de la case du dessus
+                                        plateau.grille[L][colonne].Boule2();
+                                        var = 1;
+                                    } else if (LH == 3) {   // si LH est égale à 3 il y a  bombe ou plus  autour de la case du dessus
+                                        plateau.grille[L][colonne].Boule3();
+                                        var = 1;
+                                    }
+
+                                }
+                                  
+                                
+                                // on vient de sortir de la première boucle on remet donc les variable qui ont été utilisé à leurs condition initials
+                                var=0;
+                                L = ligne;
+                                C = colonne;
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe en dessous d'elle  
+                                    L -= 1;
+                                    if (L < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+
+                                        break;
+                                    }
+
+                                    LB = plateau.decouverteGrille(L, colonne, 6, 17);
+                                    
+                                    // même principe que pour la boucle précédente 
+                                    
+                                    if (LB == 1) {
+                                        plateau.grille[L][colonne].Boule1();
+                                        var = 1;
+                                    } else if (LB == 0) {
+                                        plateau.grille[L][colonne].Boule0();
+                                    } else if (LB == 2) {
+                                        plateau.grille[L][colonne].Boule2();
+                                        var = 1;
+                                    } else if (LB == 3) {
+                                        plateau.grille[L][colonne].Boule3();
+                                        var = 1;
+                                    }
+                                }
+
+                                
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe à droite  d'elle  
+                                    C += 1;
+                                    if (C == 17) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                        break;
+                                    }
+                                    
+                                    // même principe que pour la boucle précedente mais pour les colonnes 
+                                    LD = plateau.decouverteGrille(ligne, C, 6, 17);
+                                    if (LD == 1) {
+                                        plateau.grille[ligne][C].Boule1();
+                                        var = 1;
+                                    } else if (LD == 0) {
+                                        plateau.grille[ligne][C].Boule0();
+                                    } else if (LD == 2) {
+                                        plateau.grille[ligne][C].Boule2();
+                                        var = 1;
+                                    } else if (LD == 3) {
+                                        plateau.grille[ligne][C].Boule3();
+                                        var = 1;
+                                    }
+                                }
+
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe à gauche  d'elle  
+                                    C -= 1;
+                                    if (C < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                        break;
+                                    }
+                                    LG = plateau.decouverteGrille(ligne, C, 6, 17);
+
+                                    // même principe que pour la boucle précédente 
+                                    if (LG == 1) {
+                                        plateau.grille[ligne][C].Boule1();
+                                        var = 1;
+                                    } else if (LG == 0) {
+                                        plateau.grille[ligne][C].Boule0();
+                                    } else if (LG == 2) {
+                                        plateau.grille[ligne][C].Boule2();
+                                        var = 1;
+                                    } else if (LG == 3) {
+                                        plateau.grille[ligne][C].Boule3();
+                                        var = 1;
+                                    }
+
+                                }
+
+                                
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+                                
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe en diagonale en haut à droite  
+                                    C += 1;
+                                    L += 1;
+
+                                    if (C == 17 || L > 5) {  // condition pour ne pas créer d'erreur 
+
+                                        break;
+                                    }
+                                    
+                                    // rappel DMD pour diagonale montante droite 
+                                    DMD = plateau.decouverteGrille(L, C, 6, 17);
+                                    
+                                    if (DMD==1) {  // si DMD egale à 1 alors il y a une bombe autour d'elle 
+                                        plateau.grille[L][C].Boule1();
+                                        var = 1;
+                                    } else if (DMD == 0) {  // si la case n'a pas de bombe autour d'elle
+                                        // on initialise plusieurs variable 
+                                        var1 = 0;
+                                        var2 = 0;
+                                        plateau.grille[L][C].Boule0();  // on remplace la case par une case de gazon 
+                                        L1 = L;
+                                        L2 = L;
+
+                                        // on vérifie en haut et en bas de cette case les autres cases 
+                                        // il s'agit ici d'un copié coller des autes boucles qui permetaient de savoir si les cases au dessus et en dessous 
+                                        while (var1 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+
+                                            if (L1 > 5) {  //condition pour ne pas créer d'erreur 
+
+                                                break;
+                                            }
+
+                                            LH = plateau.decouverteGrille(L1, C, 6, 17);
+
+                                            if (LH == 1) {
+                                                plateau.grille[L1][C].Boule1();
+                                                var1 = 1;
+                                            } else if (LH == 0) {
+                                                plateau.grille[L1][C].Boule0();
+                                            } else if (LH == 2) {
+                                                plateau.grille[L1][C].Boule2();
+                                                var1 = 1;
+                                            } else if (LH == 3) {
+                                                plateau.grille[L1][C].Boule3();
+                                                var1 = 1;
+                                            }
+                                            L1 += 1;
+
+                                        }
+
+                                        while (var2 == 0) { 
+                                           
+                                            if (L < 0) {  
+
+                                                break;
+                                            }
+
+                                            LB = plateau.decouverteGrille(L, C, 6, 17);
+
+                                            if (LB == 1) {
+                                                plateau.grille[L][C].Boule1();
+                                                var2 = 1;
+                                            } else if (LB == 0) {
+                                                plateau.grille[L][C].Boule0();
+                                            } else if (LB == 2) {
+                                                plateau.grille[L][C].Boule2();
+                                                var2 = 1;
+                                            } else if (LB == 3) {
+                                                plateau.grille[L][C].Boule3();
+                                                var2 = 1;
+                                            }
+                                            L -= 1;
+                                        }
+
+                                    } else if (DMD == 2) {
+                                        plateau.grille[L][C].Boule2();
+                                        var = 1;
+                                    } else if (DMD == 3) {
+                                        plateau.grille[L][C].Boule3();
+                                        var = 1;
+                                    }
+                                }
+
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+
+                                
+                                while (var == 0) { // création d'une boucle pour afficher les cases diagonale descendante gauche si elle sont vide ou si elles ont une bombes à proximuté  
+
+                                    C -= 1;
+                                    L += 1;
+
+                                    if (C < 0 || L > 5) {  //condition pour ne pas créer d'erreur 
+
+                                        break;
+                                    }
+
+                                    // rappel DMG veut dire diagonale montante gauche 
+                                    // même principe que pour la boucle précedente 
+                                    DMG = plateau.decouverteGrille(L, C, 6, 17);
+
+                                    if (DMG == 1) {
+                                        plateau.grille[L][C].Boule1();
+                                        var = 1;
+                                        
+                                        
+                                    } else if (DMG == 0) {  // si la case n'a pas de bombe autour alors on effectue le même procéder que pour la diagonale montante droite 
+                                        var1 = 0;
+                                        var2 = 0;
+                                        plateau.grille[L][C].Boule0();
+                                        L1 = L;
+                                        L2 = L;
+
+                                        
+                                        while (var1 == 0) { 
+
+                                            if (L1 > 5) {  //si L depasse 7 alors on ne se trouev plus dans la grille 
+
+                                                break;
+                                            }
+
+                                            LH = plateau.decouverteGrille(L1, C, 6, 17);
+
+                                            if (LH == 1) {
+                                                plateau.grille[L1][C].Boule1();
+                                                var1 = 1;
+                                            } else if (LH == 0) {
+                                                plateau.grille[L1][C].Boule0();
+                                            } else if (LH == 2) {
+                                                plateau.grille[L1][C].Boule2();
+                                                var1 = 1;
+                                            } else if (LH == 3) {
+                                                plateau.grille[L1][C].Boule3();
+                                                var1 = 1;
+                                            }
+                                            L1 += 1;
+
+                                        }
+
+                                        while (var2 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                           
+                                            if (L < 0) {  
+
+                                                break;
+                                            }
+
+                                            LB = plateau.decouverteGrille(L, C, 6, 17);
+
+                                            if (LB == 1) {
+                                                plateau.grille[L][C].Boule1();
+                                                var2 = 1;
+                                            } else if (LB == 0) {
+                                                plateau.grille[L][C].Boule0();
+                                            } else if (LB == 2) {
+                                                plateau.grille[L][C].Boule2();
+                                                var2 = 1;
+                                            } else if (LB == 3) {
+                                                plateau.grille[L][C].Boule3();
+                                                var2 = 1;
+                                            }
+                                            L -= 1;
+                                        }
+                                        
+                                    } else if (DMG == 2) {
+                                        plateau.grille[L][C].Boule2();
+                                        var = 1;
+                                    } else if (DMG == 3) {
+                                        plateau.grille[L][C].Boule3();
+                                        var = 1;
+                                    }
+
+                                }
+
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+
+                              
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                    C += 1;
+                                    L -= 1;
+                                    if (C == 17 || L < 0) {  // condition nécessaire pour ne pas avoir d'erreur 
+                                        break;
+                                    }
+
+                                    // rappel DDD veut dire diagonale descendante droite
+                                    // même principe que pour la boucle précédente 
+                                    DDD = plateau.decouverteGrille(L, C, 6, 17);
+
+                                    if (DDD == 1) {
+                                        plateau.grille[L][C].Boule1();
+                                        var = 1;
+                                    } else if (DDD == 0) {
+                                        var1 = 0;
+                                        var2 = 0;
+                                        plateau.grille[L][C].Boule0();
+                                        L1 = L;
+                                        L2 = L;
+
+                                        while (var1 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+
+                                            if (L1 > 5) {  //si L depasse 7 alors on ne se trouev plus dans la grille 
+
+                                                break;
+                                            }
+
+                                            LH = plateau.decouverteGrille(L1, C, 6, 17);
+
+                                            if (LH == 1) {
+                                                plateau.grille[L1][C].Boule1();
+                                                var1 = 1;
+                                            } else if (LH == 0) {
+                                                plateau.grille[L1][C].Boule0();
+                                            } else if (LH == 2) {
+                                                plateau.grille[L1][C].Boule2();
+                                                var1 = 1;
+                                            } else if (LH == 3) {
+                                                plateau.grille[L1][C].Boule3();
+                                                var1 = 1;
+                                            }
+                                            L1 += 1;
+
+                                        }
+
+                                        while (var2 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                           
+                                            if (L < 0) {  
+
+                                                break;
+                                            }
+
+                                            LB = plateau.decouverteGrille(L, C, 6, 17);
+
+                                            if (LB == 1) {
+                                                plateau.grille[L][C].Boule1();
+                                                var2 = 1;
+                                            } else if (LB == 0) {
+                                                plateau.grille[L][C].Boule0();
+                                            } else if (LB == 2) {
+                                                plateau.grille[L][C].Boule2();
+                                                var2 = 1;
+                                            } else if (LB == 3) {
+                                                plateau.grille[L][C].Boule3();
+                                                var2 = 1;
+                                            }
+                                            L -= 1;
+                                        }
+
+
+                                    } else if (DDD == 2) {
+                                        plateau.grille[L][C].Boule2();
+                                        var = 1;
+                                    } else if (DDD == 3) {
+                                        plateau.grille[L][C].Boule3();
+                                        var = 1;
+                                    }
+
+                                }
+
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                    C -= 1;
+                                    L -= 1;
+
+                                    if (C < 0 || L < 0) {  
+                                        break;
+                                    }
+
+                                    DDG = plateau.decouverteGrille(L, C, 6, 17);
+
+                                    // rappel DDG veut dire diagonale descendante gauche 
+                                    // même principe que pour la boucle précédente 
+                                    
+                                    if (DDG == 1) {
+                                        plateau.grille[L][C].Boule1();
+                                        var = 1;
+                                    } else if (DDG == 0) {
+                                        var1 = 0;
+                                        var2 = 0;
+                                        plateau.grille[L][C].Boule0();
+                                        L1 = L;
+                                        L2 = L;
+
+                                        while (var1 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+
+                                            if (L1 > 5) {  //si L depasse 7 alors on ne se trouev plus dans la grille 
+
+                                                break;
+                                            }
+
+                                            LH = plateau.decouverteGrille(L1, C, 6, 17);
+
+                                            if (LH == 1) {
+                                                plateau.grille[L1][C].Boule1();
+                                                var1 = 1;
+                                            } else if (LH == 0) {
+                                                plateau.grille[L1][C].Boule0();
+                                            } else if (LH == 2) {
+                                                plateau.grille[L1][C].Boule2();
+                                                var1 = 1;
+                                            } else if (LH == 3) {
+                                                plateau.grille[L1][C].Boule3();
+                                                var1 = 1;
+                                            }
+                                            L1 += 1;
+
+                                        }
+
+                                        while (var2 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
+                                            
+                                            if (L < 0) {  
+
+                                                break;
+                                            }
+
+                                            LB = plateau.decouverteGrille(L, C, 6, 17);
+
+                                            if (LB == 1) {
+                                                plateau.grille[L][C].Boule1();
+                                                var2 = 1;
+                                            } else if (LB == 0) {
+                                                plateau.grille[L][C].Boule0();
+                                            } else if (LB == 2) {
+                                                plateau.grille[L][C].Boule2();
+                                                var2 = 1;
+                                            } else if (LB == 3) {
+                                                plateau.grille[L][C].Boule3();
+                                                var2 = 1;
+                                            }
+                                            L -= 1;
+                                        }
+                                    } else if (DDG == 2) {
+                                        plateau.grille[L][C].Boule2();
+                                        var = 1;
+                                    } else if (DDG == 3) {
+                                        plateau.grille[L][C].Boule3();
+                                        var = 1;
+                                    }
+
+                                }
+
+                                var = 0;
+                                L = ligne;
+                                C = colonne;
+                                
+
+                                inter_déminage.repaint();
+                            
                                 
                                 inter_déminage.repaint();
                             } else if (t == 2) {
@@ -479,33 +964,23 @@ public class fenêtre_interface extends javax.swing.JFrame {
             for (int j = 0; j < c; j++) {
 
                 plateau.grille[i][j].supprimervie();
-                Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);
-                int ligne = i;
-                int colonne = j;
-                //Partie du code qui servira à faire des actions avec les boutons de la grille 
+                Cellule_Graphique CellGraph = new Cellule_Graphique(plateau.grille[i][j]);  // ici on créer le plateau de jeu 
+                int ligne = i;  // on affecte la ligne à une variable pour pouvoir l'utiliser ar la suite 
+                int colonne = j;  // idem pour la colonne 
+                
+                //Partie du code qui sert à faire des actions avec les boutons de la grille 
                 CellGraph.addActionListener(new java.awt.event.ActionListener() {
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
 
                         Cellule o = CellGraph.CelluleAssociee;
+                        
+                        // si le bouton cliqué est une bombe
                         if (o.bombeCourant == true) {
-                            o.ExplosionBombe();
-                            int avoirnbkit = Integer.parseInt(nb_Kits.getText());
-                            if (avoirnbkit != 0) {
-                                for (int k = 2; k >= 0; k--) {
-                                    if (plateau_vie.grille[0][k].presenceVie() == false) {
-                                        plateau_vie.grille[0][k].Ajoutervie();
-                                        affichage_vie.repaint();
-                                        avoirnbkit -= 1;
-                                        nb_Kits.setText(avoirnbkit + "");
-                                        break;
-                                    }
-                                }
-                            }
-                            inter_déminage.repaint();
-
-                            message.setText("Un Cell a explosé : Maître Kaioh n'est pas content"); // Affichage si le joueur fait exploser une bombe Cell
-
-                            for (int i = 2; i >= 0; i--) {
+                            o.ExplosionBombe();  // on active la bombe en utilisant la méthode ExplosionBombe
+                            
+                            int avoirnbkit = Integer.parseInt(nb_Kits.getText());  // on récupère le nombre de kit que possède le joueur en le convertissant en int 
+                            
+                            for (int i = 2; i >= 0; i--) {  // comme une bombe a été cliqué on enlève une vie
                                 if (plateau_vie.grille[0][i].presenceVie() == true) {
                                     plateau_vie.grille[0][i].supprimervie();
 
@@ -514,36 +989,58 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                 }
                             }
+                            if (avoirnbkit != 0) {  //si le joueur possède un kit  
+                                for (int k = 2; k >= 0; k--) {
+                                    if (plateau_vie.grille[0][k].presenceVie() == false) {  // et si il lui manque une vie  
+                                        plateau_vie.grille[0][k].Ajoutervie();  // on ajoute une vie au joeur 
+                                        affichage_vie.repaint();  // on met a jour le plateau de vie 
+                                        avoirnbkit -= 1;  // et on enlève un kit
+                                        nb_Kits.setText(avoirnbkit + "");
+                                        break;
+                                    }
+                                }
+                            }
+                            inter_déminage.repaint();  // et on met a jour le plateau 
+
+                            message.setText("Un Cell a explosé : Maître Kaioh n'est pas content"); // Affichage si le joueur fait exploser une bombe Cell
+
+                            
                             if (plateau_vie.grille[0][0].presenceVie() == false) { // Si notre joueur ne possède plus de vies alors c'est perdu
                                 message.setText("Félicitations ! \n Vous avez réalisé l'immense exploit d'être \n plus inutile que Yamcha !!!"); // Affichage si le joueur perd 
                             }
 
-                        } else if (o.avoirKit == true) {
-                            o.Usagekit();
-                            inter_déminage.repaint();
+                            
+                        } else if (o.avoirKit == true) {  // si le joueur n'a pas cliqué sur une bombe mais sur un kit 
+                            o.Usagekit();  // on tuilise le kit 
+                            inter_déminage.repaint();  // on met a jour le plateau de jeu 
 
                             for (int i = 2; i >= 0; i--) {
-                                if (plateau_vie.grille[0][i].presenceVie() == false) {
-                                    plateau_vie.grille[0][i].Ajoutervie();
-                                    affichage_vie.repaint();
+                                if (plateau_vie.grille[0][i].presenceVie() == false) {  // si une case du plateau de vie est vide 
+                                    plateau_vie.grille[0][i].Ajoutervie(); // on remet une vie 
+                                    affichage_vie.repaint();  // et on remet à jour le plateau de vie 
                                     break;
-                                } else {
+                                } else {  // sinon on ajout un au nombre de kit 
                                     nbkit += 1;
                                     nb_Kits.setText(nbkit + "");
                                     break;
                                 }
                             }
-                        } else {
+                            
+                            
+                        } else {  // et si la case cliqué n'est ni un kit ni une bombe alors 
 
-                            int t = plateau.decouverteGrille(ligne, colonne, 8, 20);
+                            int t = plateau.decouverteGrille(ligne, colonne, 8, 20);  // on cherche à savoir si il y a une bombe autour de la case cliqué 
 
-                            System.out.println(t);
-                            if (t == 1) {
-                                o.Boule1();
-                                inter_déminage.repaint();
-                            } else if (t == 0) { // si le bouton cliqué n'a pas de bombe autour de lui,
-                                //Partie du code qui part en couille 
-                                o.Boule0();
+                            
+                            if (t == 1) {  // si t égal à 1 alors il y a une seule bombe autour de cette case 
+                                o.Boule1();  // on remplace la case par une boule avec une etoile 
+                                inter_déminage.repaint();  // on emt a jour le plateau de jeu 
+                                
+                            } else if (t == 0) { // si le bouton cliqué n'a pas de bombe autour de lui
+                                
+                                
+                                o.Boule0(); // on remplace la case par une case de gazon cela signifie qu'il n'y a pas de bombe autour de cette case 
+                                
                                 int var = 0; // variable qui sert à faire des boucles 
                                 int L = ligne;
                                 int C = colonne;
@@ -564,29 +1061,32 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 
 
                                 while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
-                                    L += 1;
+                                    L += 1; // à chaque fois on augmente d'une lig,e 
+                                    
                                     if (L > 7) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
 
                                         break;
                                     }
 
-                                    LH = plateau.decouverteGrille(L, C, 8, 20);
+                                    LH = plateau.decouverteGrille(L, C, 8, 20); // on regarde la case à la ligne +1 
 
-                                    if (LH == 1) {  
-                                        plateau.grille[L][colonne].Boule1();
-                                        var = 1;
-                                    } else if (LH == 0) {
-                                        plateau.grille[L][colonne].Boule0();
-                                    } else if (LH == 2) {
+                                    if (LH == 1) {  // si LH est égale à 1 alors la case d'une dessus comporte une bombe autour d'elle 
+                                        plateau.grille[L][colonne].Boule1();  // on met donc la case à jour 
+                                        var = 1;  // on met var egal à 1 pour arrêter la boucle 
+                                    } else if (LH == 0) {  // si LH est egal à  0 alors la case du dessus ne comporte pas de bombe autour d'elle 
+                                        plateau.grille[L][colonne].Boule0();  // on met seulement a case à jour on laisse var egale à 0 pour continuer la boucle 
+                                    } else if (LH == 2) {  // si LH est égale à 2 il y a 2 bombe autour de la case du dessus
                                         plateau.grille[L][colonne].Boule2();
                                         var = 1;
-                                    } else if (LH == 3) {
+                                    } else if (LH == 3) {   // si LH est égale à 3 il y a  bombe ou plus  autour de la case du dessus
                                         plateau.grille[L][colonne].Boule3();
                                         var = 1;
                                     }
 
                                 }
+                                  
                                 
+                                // on vient de sortir de la première boucle on remet donc les variable qui ont été utilisé à leurs condition initials
                                 var=0;
                                 L = ligne;
                                 C = colonne;
@@ -598,7 +1098,9 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     }
 
                                     LB = plateau.decouverteGrille(L, colonne, 8, 20);
-
+                                    
+                                    // même principe que pour la boucle précédente 
+                                    
                                     if (LB == 1) {
                                         plateau.grille[L][colonne].Boule1();
                                         var = 1;
@@ -613,6 +1115,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     }
                                 }
 
+                                
                                 var = 0;
                                 L = ligne;
                                 C = colonne;
@@ -622,6 +1125,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     if (C == 20) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
                                         break;
                                     }
+                                    
+                                    // même principe que pour la boucle précedente mais pour les colonnes 
                                     LD = plateau.decouverteGrille(ligne, C, 8, 20);
                                     if (LD == 1) {
                                         plateau.grille[ligne][C].Boule1();
@@ -648,6 +1153,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     }
                                     LG = plateau.decouverteGrille(ligne, C, 8, 20);
 
+                                    // même principe que pour la boucle précédente 
                                     if (LG == 1) {
                                         plateau.grille[ligne][C].Boule1();
                                         var = 1;
@@ -663,12 +1169,12 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                 }
 
+                                
                                 var = 0;
                                 L = ligne;
                                 C = colonne;
-                                System.out.println(ligne);
-
-                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe en diagonale en ahut à droite  
+                                
+                                while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe en diagonale en haut à droite  
                                     C += 1;
                                     L += 1;
 
@@ -676,19 +1182,22 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                         break;
                                     }
-
+                                    
+                                    // rappel DMD pour diagonale montante droite 
                                     DMD = plateau.decouverteGrille(L, C, 8, 20);
-                                    if (DMD==1) {
+                                    
+                                    if (DMD==1) {  // si DMD egale à 1 alors il y a une bombe autour d'elle 
                                         plateau.grille[L][C].Boule1();
                                         var = 1;
                                     } else if (DMD == 0) {  // si la case n'a pas de bombe autour d'elle
+                                        // on initialise plusieurs variable 
                                         var1 = 0;
                                         var2 = 0;
-                                        plateau.grille[L][C].Boule0();
+                                        plateau.grille[L][C].Boule0();  // on remplace la case par une case de gazon 
                                         L1 = L;
                                         L2 = L;
 
-                                        //alors on vérifie en haut et en bas de cette case les autres cases 
+                                        // on vérifie en haut et en bas de cette case les autres cases 
                                         // il s'agit ici d'un copié coller des autes boucles qui permetaient de savoir si les cases au dessus et en dessous 
                                         while (var1 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
 
@@ -763,6 +1272,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                         break;
                                     }
 
+                                    // rappel DMG veut dire diagonale montante gauche 
+                                    // même principe que pour la boucle précedente 
                                     DMG = plateau.decouverteGrille(L, C, 8, 20);
 
                                     if (DMG == 1) {
@@ -780,7 +1291,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                         
                                         while (var1 == 0) { 
 
-                                            if (L1 > 7) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                            if (L1 > 7) {  //si L depasse 7 alors on ne se trouev plus dans la grille 
 
                                                 break;
                                             }
@@ -805,7 +1316,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                         while (var2 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                            
-                                            if (L < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                            if (L < 0) {  
 
                                                 break;
                                             }
@@ -845,10 +1356,12 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 while (var == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                     C += 1;
                                     L -= 1;
-                                    if (C == 20 || L < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                    if (C == 20 || L < 0) {  // condition nécessaire pour ne pas avoir d'erreur 
                                         break;
                                     }
 
+                                    // rappel DDD veut dire diagonale descendante droite
+                                    // même principe que pour la boucle précédente 
                                     DDD = plateau.decouverteGrille(L, C, 8, 20);
 
                                     if (DDD == 1) {
@@ -863,7 +1376,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                         while (var1 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
 
-                                            if (L1 > 7) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                            if (L1 > 7) {  //si L depasse 7 alors on ne se trouev plus dans la grille 
 
                                                 break;
                                             }
@@ -888,7 +1401,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                         while (var2 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                            
-                                            if (L < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                            if (L < 0) {  
 
                                                 break;
                                             }
@@ -929,12 +1442,15 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                     C -= 1;
                                     L -= 1;
 
-                                    if (C < 0 || L < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                    if (C < 0 || L < 0) {  
                                         break;
                                     }
 
                                     DDG = plateau.decouverteGrille(L, C, 8, 20);
 
+                                    // rappel DDG veut dire diagonale descendante gauche 
+                                    // même principe que pour la boucle précédente 
+                                    
                                     if (DDG == 1) {
                                         plateau.grille[L][C].Boule1();
                                         var = 1;
@@ -947,7 +1463,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                         while (var1 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
 
-                                            if (L1 > 7) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                            if (L1 > 7) {  //si L depasse 7 alors on ne se trouev plus dans la grille 
 
                                                 break;
                                             }
@@ -972,7 +1488,7 @@ public class fenêtre_interface extends javax.swing.JFrame {
 
                                         while (var2 == 0) { // création d'une boucle pour afficher les cases n'ayant acune bombe au dessus d'elle  
                                             
-                                            if (L < 0) {  //si L depasse 8 alors on ne se trouev plus dans la grille 
+                                            if (L < 0) {  
 
                                                 break;
                                             }
@@ -1009,8 +1525,8 @@ public class fenêtre_interface extends javax.swing.JFrame {
                                 
 
                                 inter_déminage.repaint();
-                            } else if (t == 2) {
-                                o.Boule2();
+                            } else if (t == 2) {  // si t egale à 2 alors la case contient deux bombes autour d'elle 
+                                o.Boule2(); // on remplace  la case par une boule à deux etoile
                                 inter_déminage.repaint();
                             } else {
                                 o.Boule3();
